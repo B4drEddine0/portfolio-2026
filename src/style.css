@@ -2,6 +2,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
 }
 
 :root {
@@ -201,6 +207,11 @@ body::before {
   transition: all 0.3s ease;
   margin-bottom: -1px;
   position: relative;
+}
+
+/* Hide icons on desktop */
+.tab-icon {
+  display: none;
 }
 
 .tab-btn:hover {
@@ -1824,17 +1835,39 @@ body::before {
 
 @media (max-width: 768px) {
   #app {
-    padding: 1rem;
+    padding: 0;
+  }
+
+  body {
+    font-size: 14px;
+    overflow: hidden;
   }
 
   .portfolio-wrapper {
-    height: 95vh;
+    height: 100vh;
+    flex-direction: column;
+    gap: 0;
+    overflow: hidden;
   }
 
+  /* Hide sidebar on mobile */
   .sidebar-compact {
-    flex-direction: column;
-    text-align: center;
+    display: none;
   }
+
+  /* Main container takes full screen */
+  .main-container {
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(15px);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* Mobile header removed - using full screen content */
 
   .profile-contacts {
     border-left: none;
@@ -1862,9 +1895,29 @@ body::before {
     margin: 0.75rem 0 0.35rem;
   }
 
+  /* Bottom navigation bar for mobile */
   .tab-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.5rem;
+    gap: 0.25rem;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(251, 191, 36, 0.2);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
     overflow-x: auto;
-    padding: 1rem 1rem 0;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .tab-nav::-webkit-scrollbar {
+    display: none;
   }
 
   .form-row {
@@ -1883,9 +1936,20 @@ body::before {
     font-size: 0.85rem;
   }
 
+  /* Resume section mobile optimization */
+  .resume-centered {
+    padding: 0.75rem !important;
+  }
+
+  .resume-centered .content-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.35rem;
+  }
+
   .resume-grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1rem;
   }
 
   .resume-grid::before {
@@ -1896,54 +1960,167 @@ body::before {
     padding: 0;
   }
 
+  .section-heading-modern {
+    padding: 0.5rem 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-heading-modern h3 {
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+  }
+
+  .section-heading-modern svg {
+    width: 24px;
+    height: 24px;
+    padding: 0.4rem;
+  }
+
   .skills-grid-compact {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
 
+  /* Mobile tab buttons (bottom nav style) */
   .tab-btn {
+    flex: 1;
+    min-width: 60px;
+    padding: 0.5rem 0.25rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+    border: none;
+    border-bottom: none;
+    border-top: 3px solid transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
     white-space: nowrap;
-    padding: 0.75rem 1rem;
-    font-size: 1rem;
-    letter-spacing: 1px;
+    text-align: center;
+    text-transform: none;
   }
 
+  .tab-btn span {
+    font-family: var(--font-ui);
+    font-weight: 500;
+  }
+
+  /* Show icons on mobile */
+  .tab-icon {
+    display: block;
+    width: 22px;
+    height: 22px;
+    stroke-width: 2;
+    transition: transform 0.2s ease;
+  }
+
+  .tab-btn.active .tab-icon {
+    transform: scale(1.1);
+  }
+
+  .tab-btn.active {
+    border-top-color: var(--accent);
+    border-bottom-color: transparent;
+    color: var(--accent);
+  }
+
+  .tab-btn:hover {
+    border-bottom-color: transparent;
+    border-top-color: rgba(251, 191, 36, 0.3);
+  }
+
+  /* Content area fills screen minus bottom nav */
   .tab-content {
-    padding: 1.5rem;
+    padding: 1rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: calc(100vh - 70px);
+    flex: 1;
+  }
+
+  .content-container {
+    height: calc(100vh - 70px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-radius: 0;
+    padding: 0;
+  }
+
+  .content-title {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  /* About section mobile optimization */
+  .about-professional {
+    padding: 0.75rem !important;
   }
 
   .about-hero-center {
-    gap: 1.5rem;
+    gap: 0.75rem;
   }
 
   .about-name-center {
-    font-size: 2.2rem;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
   }
 
   .about-title-center {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
+    padding: 0.3rem 0.75rem;
   }
 
   .about-bio-center {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    padding: 0 0.5rem;
   }
 
   .contact-quick-info {
-    flex-direction: column;
-    align-items: stretch;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
   }
 
   .info-badge {
     justify-content: center;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.75rem;
+    flex: 0 1 auto;
+  }
+
+  .info-badge svg {
+    width: 14px;
+    height: 14px;
   }
 
   .achievements-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    gap: 0.65rem;
   }
 
   .achievement-card {
-    padding: 0.85rem 0.75rem;
+    padding: 0.6rem 0.5rem;
+  }
+
+  .achievement-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .achievement-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .achievement-value {
+    font-size: 0.95rem;
+    margin: 0.25rem 0;
+  }
+
+  .achievement-label {
+    font-size: 0.6rem;
   }
 
   .projects {
@@ -2090,6 +2267,378 @@ body::before {
     padding: 0.45rem 1rem;
     font-size: 0.8rem;
     min-height: 32px;
+  }
+
+  .content-container {
+    border-radius: 16px;
+  }
+
+  .timeline-item-modern {
+    padding-left: 1rem;
+    gap: 0.5rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .timeline-item-modern::before {
+    width: 6px;
+    height: 6px;
+    top: 0.35rem;
+  }
+
+  .timeline-content-modern {
+    padding: 0.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-content-modern h4 {
+    font-size: 1.05rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .timeline-content-modern p {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    margin-top: 0.25rem;
+  }
+
+  .timeline-year {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.5rem;
+    min-width: auto;
+  }
+
+  .category-header-modern h3 {
+    font-size: 1.1rem;
+  }
+}
+
+/* Extra Small Devices (phones, less than 480px) */
+@media (max-width: 480px) {
+  #app {
+    padding: 0;
+  }
+
+  .portfolio-wrapper {
+    height: 100vh;
+    gap: 0;
+  }
+
+  /* Sidebar still hidden */
+  .sidebar-compact {
+    display: none;
+  }
+
+  .main-container {
+    height: 100vh;
+  }
+
+  /* Smaller tab buttons on small phones */
+  .tab-nav {
+    padding: 0.4rem 0.25rem;
+  }
+
+  .tab-btn {
+    min-width: 55px;
+    padding: 0.4rem 0.2rem;
+    font-size: 0.65rem;
+    gap: 0.2rem;
+  }
+
+  .tab-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .content-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .tab-content {
+    padding: 0.75rem;
+    height: calc(100vh - 100px);
+  }
+
+  .content-container {
+    border-radius: 0;
+  }
+
+  /* About section - small phones */
+  .about-professional {
+    padding: 0.5rem !important;
+  }
+
+  .about-hero-center {
+    gap: 0.5rem;
+  }
+
+  .about-name-center {
+    font-size: 1.4rem;
+    letter-spacing: 0.5px;
+  }
+
+  .about-title-center {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.6rem;
+  }
+
+  .about-bio-center {
+    font-size: 0.8rem;
+    line-height: 1.45;
+    padding: 0 0.25rem;
+  }
+
+  .contact-quick-info {
+    gap: 0.4rem;
+  }
+
+  .info-badge {
+    padding: 0.35rem 0.5rem;
+    font-size: 0.7rem;
+  }
+
+  .info-badge svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .achievements-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  .achievement-card {
+    padding: 0.5rem 0.4rem;
+  }
+
+  .achievement-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .achievement-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .achievement-value {
+    font-size: 0.85rem;
+    margin: 0.2rem 0;
+  }
+
+  .achievement-label {
+    font-size: 0.55rem;
+  }
+
+  .projects {
+    gap: 0.75rem;
+  }
+
+  .project-box {
+    border-radius: 12px;
+  }
+
+  .project-box h4 {
+    font-size: 1rem;
+  }
+
+  .project-category {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.6rem;
+  }
+
+  .filter-tabs {
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .filter-tab {
+    padding: 0.4rem 0.85rem;
+    font-size: 0.75rem;
+  }
+
+  .skills-grid-compact {
+    gap: 0.75rem;
+  }
+
+  .skills-category-compact {
+    padding: 0.75rem;
+  }
+
+  .category-header-modern h3 {
+    font-size: 1rem;
+  }
+
+  .tech-badges-compact {
+    gap: 0.4rem;
+  }
+
+  .tech-badge-compact {
+    padding: 0.4rem 0.7rem;
+    font-size: 0.8rem;
+  }
+
+  .section-heading-modern h3 {
+    font-size: 1.1rem;
+  }
+
+  /* Resume section - small phones */
+  .resume-centered {
+    padding: 0.5rem !important;
+  }
+
+  .resume-centered .content-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .resume-grid {
+    gap: 0.75rem;
+  }
+
+  .section-heading-modern {
+    padding: 0.4rem 0;
+    margin-bottom: 0.4rem;
+  }
+
+  .section-heading-modern h3 {
+    font-size: 1rem;
+  }
+
+  .section-heading-modern svg {
+    width: 20px;
+    height: 20px;
+    padding: 0.35rem;
+  }
+
+  .timeline-item-modern {
+    padding-left: 0.85rem;
+    gap: 0.4rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-item-modern::before {
+    width: 5px;
+    height: 5px;
+  }
+
+  .timeline-content-modern {
+    padding: 0.5rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .timeline-content-modern h4 {
+    font-size: 0.95rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .timeline-content-modern p {
+    font-size: 0.75rem;
+    line-height: 1.35;
+  }
+
+  .timeline-year {
+    font-size: 0.6rem;
+    padding: 0.2rem 0.4rem;
+  }
+
+  .contact-form-modern {
+    gap: 0.75rem;
+  }
+
+  .form-group label {
+    font-size: 0.75rem;
+  }
+
+  .contact-form-modern input,
+  .contact-form-modern textarea {
+    padding: 0.6rem;
+    font-size: 0.85rem;
+  }
+
+  .submit-btn-modern {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .modal-content h3 {
+    font-size: 1.6rem;
+  }
+
+  .modal-description {
+    font-size: 0.82rem;
+  }
+
+  .carousel-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .carousel-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .carousel-fullscreen {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Make buttons more touch-friendly */
+  .tab-btn,
+  .filter-tab,
+  .project-box,
+  .tech-badge-compact,
+  .social-links a,
+  .download-cv-btn,
+  .submit-btn-modern {
+    transition: all 0.2s ease;
+  }
+
+  /* Active state for touch */
+  .tab-btn:active {
+    transform: scale(0.95);
+    color: var(--accent);
+    background: rgba(251, 191, 36, 0.1);
+  }
+
+  .project-box:active {
+    transform: scale(0.98);
+  }
+
+  .filter-tab:active {
+    transform: scale(0.95);
+  }
+
+  .tech-badge-compact:active {
+    transform: scale(0.95);
+    background: rgba(251, 191, 36, 0.15);
+  }
+
+  /* Remove hover effects on touch devices */
+  .project-box:hover {
+    transform: none;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  }
+
+  .tab-btn:hover {
+    background: transparent;
+  }
+
+  /* Improve scrolling */
+  .tab-nav,
+  .tab-content,
+  .content-container {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Prevent text selection on navigation */
+  .tab-nav {
+    user-select: none;
+    -webkit-user-select: none;
   }
 }
 

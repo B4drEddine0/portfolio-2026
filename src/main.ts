@@ -865,7 +865,7 @@ function init() {
         <div class="loader-letters">Bienvenue à mon portfolio</div>
       </div>
     </div>
-    <canvas id="bg-canvas"></canvas>
+    <div id="bg-canvas"></div>
     <div class="portfolio-wrapper">
       <aside class="sidebar-compact">
         <img src="/profile-pic.png" alt="${profile.name}" class="profile-avatar">

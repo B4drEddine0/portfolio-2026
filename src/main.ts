@@ -258,7 +258,7 @@ function initThreeBackground() {
   
   loader.load(
     '/animated_spider.glb',
-    (gltf) => {
+    (gltf: any) => {
       const spider = gltf.scene
       
       // Scale and position spider to be visible beside tabs
@@ -267,7 +267,7 @@ function initThreeBackground() {
       spider.rotation.z = -Math.PI / 6
       
       // Ensure materials are visible with enhanced lighting
-      spider.traverse((child) => {
+      spider.traverse((child: any) => {
         if ((child as THREE.Mesh).isMesh) {
           const mesh = child as THREE.Mesh
           if (mesh.material) {
@@ -282,8 +282,8 @@ function initThreeBackground() {
       // Setup animations if available
       if (gltf.animations && gltf.animations.length > 0) {
         mixer = new THREE.AnimationMixer(spider)
-        gltf.animations.forEach((clip) => {
-          const action = mixer!.createAction(clip)
+        gltf.animations.forEach((clip: any) => {
+          const action = mixer!.clipAction(clip)
           action.play()
         })
       }
@@ -291,7 +291,7 @@ function initThreeBackground() {
       spiderGroup.add(spider)
     },
     undefined,
-    (error) => {
+    (error: any) => {
       console.error('Error loading spider model:', error)
     }
   )
@@ -1006,15 +1006,15 @@ function showModal(project: typeof projects[0]) {
   }
 }
 
-function createParticleTrail(e: MouseEvent) {
-  const particle = document.createElement('div')
-  particle.className = 'mouse-particle'
-  particle.style.left = e.clientX + 'px'
-  particle.style.top = e.clientY + 'px'
-  particle.style.background = `hsl(${Math.random() * 60 + 30}, 100%, 60%)`
-  document.body.appendChild(particle)
-  setTimeout(() => particle.remove(), 1000)
-}
+// function createParticleTrail(e: MouseEvent) {
+//   const particle = document.createElement('div')
+//   particle.className = 'mouse-particle'
+//   particle.style.left = e.clientX + 'px'
+//   particle.style.top = e.clientY + 'px'
+//   particle.style.background = `hsl(${Math.random() * 60 + 30}, 100%, 60%)`
+//   document.body.appendChild(particle)
+//   setTimeout(() => particle.remove(), 1000)
+// }
 
 function init() {
   const app = document.querySelector('#app')

@@ -63,40 +63,155 @@ const skills = [
 
 const projects = [
   {
-    name: 'Site web de réservation pour restaurant',
-    category: 'web',
-    description: 'Création d\'un site web permettant aux clients de réserver en ligne, avec personnalisation du thème et intégration de fonctionnalités spécifiques.',
-    tech: ['WordPress', 'Plugins personnalisés', 'PHP', 'MySQL'],
-    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop'
+    name: 'Système de gestion de transport',
+    category: 'csharp',
+    description: 'Logiciel de gestion de transport pour les entreprises de logistique au Maroc et à l\'international.',
+    detailedDescription: `Un système complet de gestion de transport avec suivi en temps réel, développé pour optimiser les opérations logistiques des entreprises de transport.
+
+<strong>Fonctionnalités principales :</strong>
+• Page d'accueil avec statistiques claires sur les revenus, dépenses et bénéfices
+• Suivi GPS en temps réel des véhicules sur cartes interactives
+• Gestion complète des commandes de transport
+• Gestion des chauffeurs et des véhicules
+• Rappels automatiques pour la maintenance et les documents
+• Facturation pour livraisons nationales (avec TVA) et internationales
+• Aperçu financier avec revenus et dépenses
+• Export Excel pour l'échange de données avec d'autres entreprises
+• Sauvegarde et récupération des données
+• Administration des utilisateurs avec différents droits d'accès
+• Journal d'actions pour les administrateurs
+• Interface utilisateur personnalisable avec divers thèmes`,
+    tech: ['C#', 'WinForms', 'SQL Server', 'HTML/CSS/JS', 'Crystal Reports'],
+    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop',
+    video: '/logistic-app/demo.mp4',
+    mediaType: 'video'
   },
   {
-    name: 'Application de Gestion Budgétaire Personnelle avec IA',
-    category: 'web',
-    description: 'Développement d\'une application web de gestion budgétaire personnelle intégrant l\'IA pour des suggestions financières, avec un système d\'authentification, un tableau de bord interactif, et des fonctionnalités automatisées pour le suivi des dépenses et des objectifs d\'épargne.',
-    tech: ['Laravel', 'MySQL', 'API Gemini', 'JavaScript', 'DigitalOcean'],
-    image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&h=400&fit=crop'
+    name: 'FasGo - Plateforme de livraison',
+    category: 'laravel',
+    description: 'Architecture microservices complète pour une plateforme de livraison de nourriture opérant au Maroc.',
+    detailedDescription: `Développement d'une architecture microservices complète pour FasGo, une plateforme de livraison de nourriture innovante au Maroc, connectant clients et restaurants locaux.
+
+<strong>Objectifs réalisés :</strong>
+• Conception et développement d'une landing page avec formulaires d'inscription
+• Création d'un tableau de bord pour les restaurants partenaires
+• Développement d'un super admin dashboard avec suivi en temps réel des livreurs
+• Intégration des services cloud AWS (S3) pour la gestion des fichiers
+• Implémentation d'un système de communication en temps réel avec RabbitMQ
+• Préparation de l'infrastructure pour un futur dashboard des livreurs
+
+<strong>Technologies Backend :</strong>
+• Laravel 12 (Framework PHP)
+• MySQL (Base de données principale)
+• Redis (Cache et sessions)
+• RabbitMQ (Message broker pour communication temps réel)
+
+<strong>Technologies Frontend :</strong>
+• Livewire (Framework Laravel pour interfaces réactives)
+• Tailwind CSS (Framework CSS utilitaire)
+• JavaScript/Alpine.js
+• Flux UI (Composants Livewire)
+
+<strong>Services Cloud :</strong>
+• AWS S3 (Stockage de fichiers)
+• AWS SQS (Queue management)
+
+<strong>Outils de cartographie :</strong>
+• Leaflet.js (Cartes interactives)
+• APIs de géolocalisation`,
+    tech: ['Laravel', 'Livewire', 'Tailwind CSS', 'MySQL', 'Redis', 'RabbitMQ', 'AWS S3'],
+    image: '/fasgo-cover.png',
+    images: [
+      '/fasgo-app/1.png',
+      '/fasgo-app/2.png',
+      '/fasgo-app/3.png',
+      '/fasgo-app/4.png',
+      '/fasgo-app/5.png',
+      '/fasgo-app/6.png',
+      '/fasgo-app/7.png',
+      '/fasgo-app/8.png',
+      '/fasgo-app/9.png',
+      '/fasgo-app/10.png',
+      '/fasgo-app/11.png',
+      '/fasgo-app/12.png',
+      '/fasgo-app/13.png',
+      '/fasgo-app/14.png',
+      '/fasgo-app/15.png',
+      '/fasgo-app/16.png'
+    ],
+    mediaType: 'images'
   },
   {
-    name: 'Plateforme de livraison type Glovo',
-    category: 'web',
-    description: 'Développement de plateforme de livraison et de logistique avec fonctionnalités en temps réel, suivi de commande et gestion des livreurs.',
-    tech: ['Laravel', 'Livewire', 'MySQL', 'API REST'],
-    image: 'https://images.unsplash.com/photo-1526367790999-0150786686a2?w=600&h=400&fit=crop'
+    name: 'Tricol - Gestion Stock & Commandes',
+    category: 'springboot',
+    description: 'API REST complète pour la gestion des commandes fournisseurs et du stock avec méthode FIFO pour entreprise textile.',
+    detailedDescription: `Développement d'une API REST complète pour Tricol, entreprise spécialisée dans la fabrication de vêtements professionnels, permettant la digitalisation de la gestion des approvisionnements et du stock.
+
+<strong>Fonctionnalités développées :</strong>
+
+<strong>📦 Gestion des Fournisseurs</strong>
+• CRUD complet avec recherche et filtrage avancés
+• Gestion des informations complètes : raison sociale, contacts, ICE
+• Association avec les commandes et produits
+
+<strong>🏷️ Gestion des Produits</strong>
+• CRUD complet avec gestion des catégories
+• Consultation du stock disponible en temps réel
+• Système d'alertes automatiques sur seuils minimums
+• Traçabilité complète des mouvements
+
+<strong>📋 Gestion des Commandes Fournisseurs</strong>
+• Création, modification et annulation de commandes
+• Calcul automatique des montants totaux
+• Gestion des statuts : EN_ATTENTE, VALIDÉE, LIVRÉE, ANNULÉE
+• Réception de commandes avec génération automatique des lots de stock
+• Filtrage par fournisseur, statut et période
+
+<strong>📊 Gestion de Stock (Méthode FIFO)</strong>
+• Mouvements d'entrée automatiques lors de la réception des commandes
+• Mouvements de sortie selon la méthode FIFO (First In, First Out)
+• Traçabilité complète des lots : numéro unique, date d'entrée, prix d'achat
+• Valorisation du stock en temps réel avec méthode FIFO
+• Historique détaillé de tous les mouvements
+• Alertes automatiques pour stocks sous le seuil minimum
+
+<strong>📄 Bons de Sortie Atelier</strong>
+• Création de bons de sortie pour les ateliers de production
+• Ajout multi-produits avec quantités spécifiques
+• Validation déclenchant automatiquement les sorties FIFO
+• Gestion des statuts : BROUILLON, VALIDÉ, ANNULÉ
+• Motifs de sortie : PRODUCTION, MAINTENANCE, AUTRE
+• Traçabilité complète entre bons de sortie et mouvements de stock
+
+<strong>🔐 Sécurité & Authentification</strong>
+• Authentification JWT (JSON Web Tokens)
+• Gestion des rôles et permissions (Role-Based Access Control)
+• Sécurisation de toutes les endpoints de l'API
+
+<strong>✅ Tests & Qualité</strong>
+• Tests unitaires complets avec JUnit
+• Tests de mocking avec Mockito
+• Couverture de tests élevée pour garantir la fiabilité
+• Validation des règles métier FIFO
+
+<strong>💻 Frontend Angular (En développement)</strong>
+• Interface web moderne développée avec Angular
+• Consommation de l'API REST
+• Dashboard interactif pour la gestion du stock
+• Visualisation en temps réel des données
+• Interface utilisateur intuitive et responsive
+
+<strong>Technologies utilisées :</strong>
+• Spring Boot (Backend REST API)
+• Spring Security avec JWT
+• JPA/Hibernate (ORM)
+• MySQL (Base de données)
+• JUnit & Mockito (Tests)
+• Angular (Frontend - en cours)`,
+    tech: ['Spring Boot', 'Spring Security', 'JWT', 'JPA', 'MySQL', 'JUnit', 'Mockito', 'Angular'],
+    image: '/tricol-cover.svg',
+    mediaType: 'image'
   },
-  {
-    name: 'Application desktop de gestion logistique',
-    category: 'app',
-    description: 'Application desktop de gestion logistique pour le transport de marchandises, intégrant un système de suivi des expéditions, une gestion des stocks, et des rapports automatisés.',
-    tech: ['C#', 'WinForms', 'SQL Server'],
-    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop'
-  },
-  {
-    name: 'Plateforme de livraison de nourriture',
-    category: 'web',
-    description: 'Landing page responsive et multilingue avec tableaux de bord pour gestion des menus, commandes et statistiques. Intégration AWS S3, RabbitMQ et Redis.',
-    tech: ['Laravel', 'Vue.js', 'AWS S3', 'RabbitMQ', 'Redis'],
-    image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&h=400&fit=crop'
-  }
 ]
 
 let currentTab = 'about'
@@ -114,15 +229,16 @@ function initThreeBackground() {
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
   camera.position.set(0, 0, 5)
 
-  // Create silk thread (white line from top) - positioned on the right side
+  // Create single silk thread for spider
   const threadPoints = []
-  const threadLength = 8
-  const threadXOffset = 3
+  const threadLength = 10
+  const threadXOffset = -2
+  
   for (let i = 0; i <= 30; i++) {
     const t = i / 30
     const y = 10 - threadLength * t
     const x = threadXOffset + Math.sin(t * Math.PI * 3) * 0.15
-    threadPoints.push(new THREE.Vector3(x, y, 0))
+    threadPoints.push(new THREE.Vector3(x, y, 3))
   }
   
   const threadGeometry = new THREE.BufferGeometry().setFromPoints(threadPoints)
@@ -135,19 +251,20 @@ function initThreeBackground() {
   const silkThread = new THREE.Line(threadGeometry, threadMaterial)
   scene.add(silkThread)
 
-  // Load 3D spider model from GLB file
+  // Load animated 3D spider model from GLB file
   const spiderGroup = new THREE.Group()
   const loader = new GLTFLoader()
+  let mixer: THREE.AnimationMixer | null = null
   
   loader.load(
-    '/theraposablondi.glb',
+    '/animated_spider.glb',
     (gltf) => {
       const spider = gltf.scene
       
-      // Scale and orient the spider - BIGGER!
-      spider.scale.set(0.8, 0.8, 0.8)
+      // Scale and position spider to be visible beside tabs
+      spider.scale.set(0.3, 0.3, 0.3)
       spider.rotation.x = Math.PI / 2
-      spider.rotation.z = Math.PI
+      spider.rotation.z = -Math.PI / 6
       
       // Ensure materials are visible with enhanced lighting
       spider.traverse((child) => {
@@ -156,11 +273,20 @@ function initThreeBackground() {
           if (mesh.material) {
             const material = mesh.material as THREE.MeshStandardMaterial
             material.needsUpdate = true
-            material.roughness = 0.6
-            material.metalness = 0.3
+            material.roughness = 0.5
+            material.metalness = 0.4
           }
         }
       })
+      
+      // Setup animations if available
+      if (gltf.animations && gltf.animations.length > 0) {
+        mixer = new THREE.AnimationMixer(spider)
+        gltf.animations.forEach((clip) => {
+          const action = mixer!.createAction(clip)
+          action.play()
+        })
+      }
       
       spiderGroup.add(spider)
     },
@@ -170,8 +296,8 @@ function initThreeBackground() {
     }
   )
 
-  // Position spider at the end of thread (right side)
-  spiderGroup.position.set(threadXOffset, threadPoints[threadPoints.length - 1].y, 0)
+  // Position spider beside tabs (top-left, visible area)
+  spiderGroup.position.set(-2, 3, 3)
   scene.add(spiderGroup)
 
   // Enhanced lighting for realistic spider visibility
@@ -187,37 +313,40 @@ function initThreeBackground() {
   scene.add(pointLight2)
 
   // Spotlight on spider for dramatic effect
-  const spotLight = new THREE.SpotLight(0xffffff, 1.5)
-  spotLight.position.set(threadXOffset + 2, 5, 8)
+  const spotLight = new THREE.SpotLight(0xffffff, 2)
+  spotLight.position.set(-2, 7, 8)
   spotLight.target.position.copy(spiderGroup.position)
-  spotLight.angle = Math.PI / 6
-  spotLight.penumbra = 0.5
+  spotLight.angle = Math.PI / 5
+  spotLight.penumbra = 0.4
   scene.add(spotLight)
   scene.add(spotLight.target)
 
   let time = 0
-
-  // Position spider at bottom-right edge
-  spiderGroup.position.set(8, -3, 1)
-  spiderGroup.scale.set(1, 1, 1)
+  const clock = new THREE.Clock()
 
   function animate() {
     requestAnimationFrame(animate)
     time += 0.01
+    const delta = clock.getDelta()
     
-    // Very subtle idle movement at the edge
-    spiderGroup.position.x = 8 + Math.sin(time * 0.3) * 0.1
-    spiderGroup.position.y = -3 + Math.cos(time * 0.25) * 0.08
+    // Update animation mixer if available
+    if (mixer) {
+      mixer.update(delta)
+    }
     
-    // Subtle rotation
+    // Spider walking beside tabs - horizontal movement
+    spiderGroup.position.x = -2 + Math.sin(time * 0.3) * 0.4
+    spiderGroup.position.y = 3 + Math.cos(time * 0.25) * 0.2
+    
+    // Walking rotation
     if (spiderGroup.children.length > 0) {
-      spiderGroup.rotation.y = Math.sin(time * 0.2) * 0.05
-      spiderGroup.rotation.z = Math.cos(time * 0.15) * 0.03
+      spiderGroup.rotation.y = Math.sin(time * 0.5) * 0.1
+      spiderGroup.rotation.z = -Math.PI / 6 + Math.cos(time * 0.4) * 0.05
     }
 
-    // Update thread to stay attached to spider
+    // Update main thread to stay attached to spider
     const currentThreadPoints = []
-    const threadStart = new THREE.Vector3(8, 10, 1)
+    const threadStart = new THREE.Vector3(-2, 10, 3)
     const threadEnd = spiderGroup.position.clone()
     
     for (let i = 0; i <= 30; i++) {
@@ -238,7 +367,7 @@ function initThreeBackground() {
     // Subtle light animation
     pointLight1.intensity = 1.2 + Math.sin(time * 1.5) * 0.2
     pointLight2.intensity = 1 + Math.cos(time * 1.3) * 0.2
-    spotLight.intensity = 1.3 + Math.sin(time * 2) * 0.2
+    spotLight.intensity = 2 + Math.sin(time * 2) * 0.2
 
     renderer.render(scene, camera)
   }
@@ -414,7 +543,7 @@ function renderSkills() {
           </div>
           <div class="tech-badges-compact">
             ${skills.filter(s => ['HTML5', 'CSS3', 'JavaScript', 'React', 'Tailwind', 'Livewire'].includes(s.name)).map((s) => `
-              <div class="tech-badge-compact">
+              <div class="tech-badge-compact" data-tech="${s.name}">
                 <span class="tech-icon-compact">${s.icon}</span>
                 <span>${s.name}</span>
               </div>
@@ -432,7 +561,7 @@ function renderSkills() {
           </div>
           <div class="tech-badges-compact">
             ${skills.filter(s => ['PHP', 'Laravel', 'C#', '.NET', 'Java', 'Spring'].includes(s.name)).map((s) => `
-              <div class="tech-badge-compact">
+              <div class="tech-badge-compact" data-tech="${s.name}">
                 <span class="tech-icon-compact">${s.icon}</span>
                 <span>${s.name}</span>
               </div>
@@ -451,7 +580,7 @@ function renderSkills() {
           </div>
           <div class="tech-badges-compact">
             ${skills.filter(s => ['MySQL', 'PostgreSQL', 'MongoDB'].includes(s.name)).map((s) => `
-              <div class="tech-badge-compact">
+              <div class="tech-badge-compact" data-tech="${s.name}">
                 <span class="tech-icon-compact">${s.icon}</span>
                 <span>${s.name}</span>
               </div>
@@ -469,7 +598,7 @@ function renderSkills() {
           </div>
           <div class="tech-badges-compact">
             ${skills.filter(s => ['Git', 'GitHub', 'Docker', 'AWS', 'JIRA', 'Figma', 'WordPress'].includes(s.name)).map((s) => `
-              <div class="tech-badge-compact">
+              <div class="tech-badge-compact" data-tech="${s.name}">
                 <span class="tech-icon-compact">${s.icon}</span>
                 <span>${s.name}</span>
               </div>
@@ -484,27 +613,50 @@ function renderSkills() {
 function renderPortfolio() {
   const filtered = currentFilter === 'all' ? projects : projects.filter(p => p.category === currentFilter)
   
+  const categoryLabels: Record<string, string> = {
+    'laravel': 'Laravel',
+    'springboot': 'Spring Boot',
+    'csharp': '.NET / C#'
+  }
+  
   return `
     <div class="tab-content">
       <h2 class="content-title">Portfolio</h2>
       <div class="filter-tabs">
         <button class="filter-tab ${currentFilter === 'all' ? 'active' : ''}" data-filter="all">Tout</button>
-        <button class="filter-tab ${currentFilter === 'web' ? 'active' : ''}" data-filter="web">Développement Web</button>
-        <button class="filter-tab ${currentFilter === 'app' ? 'active' : ''}" data-filter="app">Applications</button>
+        <button class="filter-tab ${currentFilter === 'laravel' ? 'active' : ''}" data-filter="laravel">Laravel</button>
+        <button class="filter-tab ${currentFilter === 'springboot' ? 'active' : ''}" data-filter="springboot">Spring Boot</button>
+        <button class="filter-tab ${currentFilter === 'csharp' ? 'active' : ''}" data-filter="csharp">.NET / C#</button>
       </div>
       <div class="projects">
-        ${filtered.map((p, i) => `
-          <div class="project-box" data-index="${i}">
+        ${filtered.map((p) => `
+          <div class="project-box" data-project-name="${p.name}">
             <div class="project-thumb" style="background-image: url(${p.image})">
               <div class="project-hover">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                  <circle cx="12" cy="12" r="3"/>
-                </svg>
+                <div class="hover-content">
+                  <svg class="eye-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Eye outline -->
+                    <path d="M32 16C20 16 10 24 4 32C10 40 20 48 32 48C44 48 54 40 60 32C54 24 44 16 32 16Z" 
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <!-- Iris -->
+                    <circle cx="32" cy="32" r="10" fill="currentColor" opacity="0.2"/>
+                    <circle cx="32" cy="32" r="10" stroke="currentColor" stroke-width="2"/>
+                    <!-- Pupil -->
+                    <circle cx="32" cy="32" r="5" fill="currentColor"/>
+                    <!-- Light reflection -->
+                    <circle cx="35" cy="29" r="2" fill="white" opacity="0.8"/>
+                    <!-- Upper eyelid detail -->
+                    <path d="M20 28C22 26 27 24 32 24C37 24 42 26 44 28" 
+                          stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+                  </svg>
+                  <span class="hover-text">Voir le projet</span>
+                </div>
               </div>
             </div>
             <h4>${p.name}</h4>
-            <p>${p.category}</p>
+            <div class="project-category-wrapper">
+              <span class="project-category">${categoryLabels[p.category] || p.category}</span>
+            </div>
           </div>
         `).join('')}
       </div>
@@ -643,8 +795,9 @@ function switchTab(tabName: string) {
     document.querySelectorAll('.project-box').forEach((box, i) => {
       (box as HTMLElement).style.animationDelay = `${i * 0.1}s`
       box.addEventListener('click', () => {
-        const index = parseInt(box.getAttribute('data-index') || '0')
-        showModal(projects[index])
+        const projectName = box.getAttribute('data-project-name') || ''
+        const project = projects.find(p => p.name === projectName)
+        if (project) showModal(project)
       })
     })
   }
@@ -666,20 +819,89 @@ function switchTab(tabName: string) {
       }
     })
   }
+
+  if (tabName === 'skills') {
+    // Tech mapping to project categories
+    const techToCategory: Record<string, string> = {
+      'Laravel': 'laravel',
+      'Livewire': 'laravel',
+      'PHP': 'laravel',
+      'Spring': 'springboot',
+      'Java': 'springboot',
+      'C#': 'csharp',
+      '.NET': 'csharp',
+    }
+
+    document.querySelectorAll('.tech-badge-compact').forEach(badge => {
+      badge.addEventListener('click', () => {
+        const tech = badge.getAttribute('data-tech')
+        if (tech) {
+          // If tech maps to a category, filter by it. Otherwise, show all
+          currentFilter = techToCategory[tech] || 'all'
+          switchTab('portfolio')
+        }
+      })
+    })
+  }
 }
 
 function showModal(project: typeof projects[0]) {
   const modal = document.querySelector('.modal') as HTMLElement
   if (!modal) return
 
+  let mediaContent = ''
+  
+  if (project.mediaType === 'video' && project.video) {
+    mediaContent = `
+      <div class="modal-media">
+        <video controls autoplay muted loop>
+          <source src="${project.video}" type="video/mp4">
+          Votre navigateur ne supporte pas la vidéo.
+        </video>
+      </div>
+    `
+  } else if (project.mediaType === 'images' && project.images) {
+    mediaContent = `
+      <div class="modal-media modal-carousel">
+        <button class="carousel-btn carousel-prev">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <div class="carousel-track">
+          ${project.images.map((img, idx) => `
+            <img src="${img}" alt="${project.name}" class="carousel-image ${idx === 0 ? 'active' : ''}" data-index="${idx}">
+          `).join('')}
+        </div>
+        <button class="carousel-btn carousel-next">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+        <button class="carousel-fullscreen" title="Agrandir">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+          </svg>
+        </button>
+        <div class="carousel-indicators">
+          ${project.images.map((_, idx) => `
+            <span class="indicator ${idx === 0 ? 'active' : ''}" data-index="${idx}"></span>
+          `).join('')}
+        </div>
+      </div>
+    `
+  } else {
+    mediaContent = `<img src="${project.image}" alt="${project.name}" class="modal-single-image">`
+  }
+
   modal.innerHTML = `
     <div class="modal-backdrop"></div>
     <div class="modal-box">
       <button class="modal-close">×</button>
-      <img src="${project.image}" alt="${project.name}">
+      ${mediaContent}
       <div class="modal-content">
         <h3>${project.name}</h3>
-        <p>${project.description}</p>
+        <div class="modal-description">${project.detailedDescription || project.description}</div>
         <div class="modal-tech">
           ${project.tech.map(t => `<span>${t}</span>`).join('')}
         </div>
@@ -690,6 +912,98 @@ function showModal(project: typeof projects[0]) {
   modal.classList.add('open')
   modal.querySelector('.modal-close')?.addEventListener('click', () => modal.classList.remove('open'))
   modal.querySelector('.modal-backdrop')?.addEventListener('click', () => modal.classList.remove('open'))
+
+  // Image carousel functionality
+  if (project.mediaType === 'images' && project.images) {
+    let currentIndex = 0
+    const images = modal.querySelectorAll('.carousel-image')
+    const indicators = modal.querySelectorAll('.indicator')
+    const prevBtn = modal.querySelector('.carousel-prev')
+    const nextBtn = modal.querySelector('.carousel-next')
+
+    const showImage = (index: number) => {
+      images.forEach((img, i) => {
+        img.classList.toggle('active', i === index)
+      })
+      indicators.forEach((ind, i) => {
+        ind.classList.toggle('active', i === index)
+      })
+      currentIndex = index
+    }
+
+    prevBtn?.addEventListener('click', () => {
+      const newIndex = currentIndex > 0 ? currentIndex - 1 : images.length - 1
+      showImage(newIndex)
+    })
+
+    nextBtn?.addEventListener('click', () => {
+      const newIndex = currentIndex < images.length - 1 ? currentIndex + 1 : 0
+      showImage(newIndex)
+    })
+
+    indicators.forEach((indicator, idx) => {
+      indicator.addEventListener('click', () => showImage(idx))
+    })
+
+    // Fullscreen functionality
+    const fullscreenBtn = modal.querySelector('.carousel-fullscreen')
+    const carousel = modal.querySelector('.modal-carousel')
+    
+    fullscreenBtn?.addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        carousel?.requestFullscreen().catch(err => {
+          console.log(`Error attempting to enable fullscreen: ${err.message}`)
+        })
+      } else {
+        document.exitFullscreen()
+      }
+    })
+
+    // Update fullscreen button icon
+    document.addEventListener('fullscreenchange', () => {
+      const btn = fullscreenBtn as HTMLButtonElement
+      if (btn) {
+        if (document.fullscreenElement) {
+          btn.innerHTML = `
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/>
+            </svg>
+          `
+          btn.title = 'Réduire'
+        } else {
+          btn.innerHTML = `
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+            </svg>
+          `
+          btn.title = 'Agrandir'
+        }
+      }
+    })
+
+    // Keyboard navigation
+    const handleKeydown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') {
+        prevBtn?.dispatchEvent(new Event('click'))
+      } else if (e.key === 'ArrowRight') {
+        nextBtn?.dispatchEvent(new Event('click'))
+      } else if (e.key === 'Escape') {
+        if (document.fullscreenElement) {
+          document.exitFullscreen()
+        } else {
+          modal.classList.remove('open')
+          document.removeEventListener('keydown', handleKeydown)
+        }
+      } else if (e.key === 'f' || e.key === 'F') {
+        fullscreenBtn?.dispatchEvent(new Event('click'))
+      }
+    }
+
+    document.addEventListener('keydown', handleKeydown)
+    modal.querySelector('.modal-close')?.addEventListener('click', () => {
+      document.removeEventListener('keydown', handleKeydown)
+    })
+  }
 }
 
 function createParticleTrail(e: MouseEvent) {

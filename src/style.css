@@ -1905,16 +1905,17 @@ body::before {
     z-index: 999999 !important;
     display: flex !important;
     justify-content: space-evenly !important;
-    align-items: center !important;
-    padding: 0.5rem 0.5rem calc(0.5rem + env(safe-area-inset-bottom)) !important;
-    gap: 0.3rem;
+    align-items: stretch !important;
+    padding: 0 !important;
+    gap: 0;
     background: rgba(26, 26, 26, 0.98) !important;
     backdrop-filter: blur(10px) !important;
     -webkit-backdrop-filter: blur(10px) !important;
     border-top: 3px solid #fbbf24 !important;
     box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.8) !important;
     overflow: visible !important;
-    min-height: 70px !important;
+    height: auto !important;
+    min-height: auto !important;
     transform: translateZ(0) !important;
     -webkit-transform: translateZ(0) !important;
     margin: 0 !important;
@@ -1991,7 +1992,7 @@ body::before {
     flex: 1 !important;
     min-width: 60px !important;
     max-width: 80px;
-    padding: 0.4rem 0.25rem 0.3rem !important;
+    padding: 0.65rem 0.25rem calc(0.65rem + env(safe-area-inset-bottom)) !important;
     font-size: 0.65rem !important;
     letter-spacing: 0.2px;
     border: none !important;
@@ -2010,7 +2011,8 @@ body::before {
     color: rgba(255, 255, 255, 0.8) !important;
     opacity: 1 !important;
     visibility: visible !important;
-    height: 100% !important;
+    height: auto !important;
+    min-height: 65px !important;
     pointer-events: auto !important;
     position: relative;
     z-index: 999999;
@@ -2077,18 +2079,18 @@ body::before {
     padding: 1rem;
     overflow-y: auto;
     overflow-x: hidden;
-    height: calc(100vh - 85px) !important;
+    height: calc(100vh - 70px) !important;
     flex: 1;
     padding-bottom: 2rem !important;
   }
 
   .content-container {
-    height: calc(100vh - 85px) !important;
+    height: calc(100vh - 70px) !important;
     overflow-y: auto;
     overflow-x: hidden;
     border-radius: 0;
     padding: 0;
-    padding-bottom: 90px !important;
+    padding-bottom: 80px !important;
   }
 
   .content-title {

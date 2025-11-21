@@ -2092,8 +2092,12 @@ body::before {
     margin: 0.75rem 0 0.35rem;
   }
 
-  /* Hide desktop tab navigation on mobile */
+  /* Hide desktop tab navigation on mobile - show side drawer instead */
   .tab-nav {
+    display: none !important;
+  }
+
+  .tab-btn {
     display: none !important;
   }
 

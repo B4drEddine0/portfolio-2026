@@ -970,6 +970,25 @@ function init() {
             </button>
           </nav>
         </div>
+
+        <!-- Desktop Navigation Tabs -->
+        <nav class="tab-nav">
+          <button class="tab-btn active" data-tab="about">
+            <span>À propos</span>
+          </button>
+          <button class="tab-btn" data-tab="resume">
+            <span>CV</span>
+          </button>
+          <button class="tab-btn" data-tab="skills">
+            <span>Compétences</span>
+          </button>
+          <button class="tab-btn" data-tab="portfolio">
+            <span>Portfolio</span>
+          </button>
+          <button class="tab-btn" data-tab="contact">
+            <span>Contact</span>
+          </button>
+        </nav>
         
         <div class="content-container"></div>
       </main>
@@ -1015,6 +1034,17 @@ function init() {
           item.classList.remove('active')
         })
         btn.classList.add('active')
+      }
+    })
+  })
+
+  // Desktop tab navigation
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const tab = btn.getAttribute('data-tab')
+      if (tab) {
+        switchTab(tab)
+        createRipple(e as MouseEvent)
       }
     })
   })

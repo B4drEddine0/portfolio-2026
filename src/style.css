@@ -1904,18 +1904,21 @@ body::before {
     width: 100vw !important;
     z-index: 999999 !important;
     display: flex !important;
-    justify-content: space-around !important;
+    justify-content: space-evenly !important;
     align-items: center !important;
-    padding: 0.5rem 0.5rem 0.65rem !important;
-    gap: 0.25rem;
-    background: #1a1a1a !important;
+    padding: 0.5rem 0.5rem calc(0.5rem + env(safe-area-inset-bottom)) !important;
+    gap: 0.3rem;
+    background: rgba(26, 26, 26, 0.98) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
     border-top: 3px solid #fbbf24 !important;
     box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.8) !important;
     overflow: visible !important;
-    height: 70px !important;
+    min-height: 70px !important;
     transform: translateZ(0) !important;
     -webkit-transform: translateZ(0) !important;
     margin: 0 !important;
+    border-bottom: none !important;
   }
 
   .tab-nav::-webkit-scrollbar {
@@ -1987,27 +1990,30 @@ body::before {
   .tab-btn {
     flex: 1 !important;
     min-width: 60px !important;
-    padding: 0.35rem 0.2rem 0.25rem !important;
+    max-width: 80px;
+    padding: 0.4rem 0.25rem 0.3rem !important;
     font-size: 0.65rem !important;
     letter-spacing: 0.2px;
     border: none !important;
     border-bottom: none !important;
-    border-top: 2px solid transparent !important;
+    border-top: 3px solid transparent !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 0.25rem !important;
+    gap: 0.3rem !important;
     white-space: nowrap !important;
     text-align: center !important;
     text-transform: none !important;
     background: transparent !important;
     margin: 0 !important;
-    color: #ffffff !important;
+    color: rgba(255, 255, 255, 0.8) !important;
     opacity: 1 !important;
     visibility: visible !important;
     height: 100% !important;
     pointer-events: auto !important;
+    position: relative;
+    z-index: 999999;
   }
 
   .tab-btn span {
@@ -2015,7 +2021,7 @@ body::before {
     font-weight: 600 !important;
     line-height: 1.1 !important;
     display: block !important;
-    color: #ffffff !important;
+    color: rgba(255, 255, 255, 0.8) !important;
     opacity: 1 !important;
     visibility: visible !important;
     font-size: 0.65rem !important;
@@ -2024,20 +2030,20 @@ body::before {
   /* Show icons on mobile */
   .tab-icon {
     display: block !important;
-    width: 26px !important;
-    height: 26px !important;
+    width: 24px !important;
+    height: 24px !important;
     stroke-width: 2 !important;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, color 0.2s ease, stroke 0.2s ease;
     opacity: 1 !important;
     visibility: visible !important;
-    color: #ffffff !important;
-    stroke: #ffffff !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    stroke: rgba(255, 255, 255, 0.8) !important;
     fill: none !important;
     flex-shrink: 0;
   }
 
   .tab-btn.active .tab-icon {
-    transform: scale(1.1);
+    transform: scale(1.15);
   }
 
   .tab-btn.active {
@@ -2061,22 +2067,28 @@ body::before {
     color: rgba(251, 191, 36, 0.9) !important;
   }
 
+  .tab-btn:hover .tab-icon {
+    color: rgba(251, 191, 36, 0.9) !important;
+    stroke: rgba(251, 191, 36, 0.9) !important;
+  }
+
   /* Content area fills screen minus bottom nav */
   .tab-content {
     padding: 1rem;
     overflow-y: auto;
     overflow-x: hidden;
-    height: calc(100vh - 80px) !important;
+    height: calc(100vh - 85px) !important;
     flex: 1;
     padding-bottom: 2rem !important;
   }
 
   .content-container {
-    height: calc(100vh - 80px) !important;
+    height: calc(100vh - 85px) !important;
     overflow-y: auto;
     overflow-x: hidden;
     border-radius: 0;
     padding: 0;
+    padding-bottom: 90px !important;
   }
 
   .content-title {

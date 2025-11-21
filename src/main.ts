@@ -903,43 +903,66 @@ function init() {
       </aside>
       
       <main class="main-container">
-        <nav class="tab-nav">
-          <button class="tab-btn active" data-tab="about">
-            <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-              <circle cx="12" cy="7" r="4"/>
-            </svg>
-            <span>À propos</span>
-          </button>
-          <button class="tab-btn" data-tab="resume">
-            <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-              <polyline points="14 2 14 8 20 8"/>
-            </svg>
-            <span>CV</span>
-          </button>
-          <button class="tab-btn" data-tab="skills">
-            <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="16 18 22 12 16 6"/>
-              <polyline points="8 6 2 12 8 18"/>
-            </svg>
-            <span>Compétences</span>
-          </button>
-          <button class="tab-btn" data-tab="portfolio">
-            <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
-              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
-            </svg>
-            <span>Portfolio</span>
-          </button>
-          <button class="tab-btn" data-tab="contact">
-            <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-              <polyline points="22,6 12,13 2,6"/>
-            </svg>
-            <span>Contact</span>
-          </button>
-        </nav>
+        <!-- Side Menu Toggle Button -->
+        <button class="side-menu-toggle" id="sideMenuToggle" aria-label="Menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </button>
+
+        <!-- Side Drawer Overlay -->
+        <div class="side-drawer-overlay" id="sideDrawerOverlay"></div>
+
+        <!-- Side Drawer Menu -->
+        <div class="side-drawer" id="sideDrawer">
+          <div class="side-drawer-header">
+            <h2>Navigation</h2>
+            <button class="side-drawer-close" id="sideDrawerClose">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+          
+          <nav class="side-drawer-nav">
+            <button class="side-drawer-item active" data-tab="about">
+              <svg class="side-drawer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+              <span>À propos</span>
+            </button>
+            <button class="side-drawer-item" data-tab="resume">
+              <svg class="side-drawer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+              </svg>
+              <span>CV</span>
+            </button>
+            <button class="side-drawer-item" data-tab="skills">
+              <svg class="side-drawer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="16 18 22 12 16 6"/>
+                <polyline points="8 6 2 12 8 18"/>
+              </svg>
+              <span>Compétences</span>
+            </button>
+            <button class="side-drawer-item" data-tab="portfolio">
+              <svg class="side-drawer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+              </svg>
+              <span>Portfolio</span>
+            </button>
+            <button class="side-drawer-item" data-tab="contact">
+              <svg class="side-drawer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+              <span>Contact</span>
+            </button>
+          </nav>
+        </div>
         
         <div class="content-container"></div>
       </main>
@@ -950,12 +973,41 @@ function init() {
   initThreeBackground()
   switchTab('about')
 
-  document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
+  // Side drawer functionality
+  const sideMenuToggle = document.getElementById('sideMenuToggle')
+  const sideDrawer = document.getElementById('sideDrawer')
+  const sideDrawerOverlay = document.getElementById('sideDrawerOverlay')
+  const sideDrawerClose = document.getElementById('sideDrawerClose')
+  
+  const openSideDrawer = () => {
+    sideDrawer?.classList.add('active')
+    sideDrawerOverlay?.classList.add('active')
+    document.body.style.overflow = 'hidden'
+  }
+  
+  const closeSideDrawer = () => {
+    sideDrawer?.classList.remove('active')
+    sideDrawerOverlay?.classList.remove('active')
+    document.body.style.overflow = ''
+  }
+  
+  sideMenuToggle?.addEventListener('click', openSideDrawer)
+  sideDrawerClose?.addEventListener('click', closeSideDrawer)
+  sideDrawerOverlay?.addEventListener('click', closeSideDrawer)
+  
+  // Side drawer navigation items
+  document.querySelectorAll('.side-drawer-item').forEach(btn => {
+    btn.addEventListener('click', () => {
       const tab = btn.getAttribute('data-tab')
       if (tab) {
         switchTab(tab)
-        createRipple(e as MouseEvent)
+        closeSideDrawer()
+        
+        // Update active state in side drawer
+        document.querySelectorAll('.side-drawer-item').forEach(item => {
+          item.classList.remove('active')
+        })
+        btn.classList.add('active')
       }
     })
   })

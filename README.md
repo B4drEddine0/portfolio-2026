@@ -5,9 +5,8 @@ Bienvenue sur mon portfolio personnel ! Je suis un développeur full stack passi
 ## 👨‍💻 À propos de moi
 
 Je suis un développeur full stack avec une expertise en :
-- **Backend** : Java, Spring Boot, API REST, Gestion de données
+- **Backend** : PHP, Laravel, C#, .NET , Java, Spring Boot, API REST, Gestion de données
 - **Frontend** : TypeScript, React, Vue.js, HTML/CSS
-- **Mobile** : Flutter (pour applications mobiles croisées)
 - **DevOps** : Docker, CI/CD, Déploiement
 - **Bases de données** : MySQL, PostgreSQL, Hibernate
 
@@ -94,11 +93,10 @@ Frontend:
 
 ## 🔗 Me Contacter
 
-- **Email** : badr.eddine.masse@gmail.com
+- **Email** : badrdine03@gmail.com
 - **GitHub** : [@B4drEddine0](https://github.com/B4drEddine0)
-- **LinkedIn** : [BadrEddine Massa](https://linkedin.com/in/badeddine-massa)
-- **Portfolio** : [massaalkhayr.vercel.app](https://massaalkhayr.vercel.app)
-- **CV** : [BadrEddine Massa AlKhayr - CV (PDF)](./BadrEddineM assaAlKhayr-cv.pdf)
+- **LinkedIn** : [BadrEddine Massa](https://linkedin.com/in/massaalkhayr)
+- **Portfolio** : [massaalkhayr.me](https://massaalkhayr.me)
 
 ## 📊 Statistiques GitHub
 
@@ -112,7 +110,7 @@ Frontend:
 ## 🕐 Déploiement
 
 Mon portfolio est déployé sur **Vercel** pour une performance optimale :
-- **URL** : https://massaalkhayr.vercel.app
+- **URL** : https://massaalkhayr.me
 - **Framework** : Vite + TypeScript
 - **CI/CD** : Automatique depuis GitHub
 - **Uptime** : 99.9%+ SLA
@@ -158,15 +156,6 @@ npm run build
 # Prévisualiser la build production
 npm run preview
 ```
-
-## 📊 Dernières Mises à Jour
-
-### 2025
-- ✅ Ajout de README complets pour les projets
-- ✅ Implémentation d'un algorithme FIFO pour Tricol
-- ✅ Migration des projets médicaux vers Jakarta EE
-- 🔄 En cours : Ajout de tests e2e Cypress
-- 🔄 Prévu : Documentation Swagger/OpenAPI
 
 ## 📋 Licence
 

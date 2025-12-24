@@ -2383,7 +2383,118 @@ body::before {
     padding-top: 1rem;
   }
 
-  .modal-tech span {
+  /* Toast Notifications */
+  .toast {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(20px);
+    border: 2px solid;
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    color: white;
+    font-family: var(--font-ui);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    z-index: 1000000;
+    transform: translateX(400px);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .toast.show {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  .toast.success {
+    border-color: #10b981;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(26, 26, 26, 0.95) 100%);
+  }
+
+  .toast.error {
+    border-color: #ef4444;
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(26, 26, 26, 0.95) 100%);
+  }
+
+  .toast-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+
+  .toast.success .toast-icon {
+    color: #10b981;
+  }
+
+  .toast.error .toast-icon {
+    color: #ef4444;
+  }
+
+  /* Custom Select Styling - High Priority Override */
+  #business-type,
+  select#business-type,
+  .contact-form-modern #business-type,
+  .contact-form-modern select#business-type {
+    padding: 0.65rem 0.85rem !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 2px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 10px !important;
+    color: var(--text) !important;
+    font-family: inherit !important;
+    font-size: 0.9rem !important;
+    outline: none !important;
+    transition: all 0.3s ease !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    cursor: pointer !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    box-sizing: border-box !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23fbbf24' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e") !important;
+    background-position: right 0.75rem center !important;
+    background-repeat: no-repeat !important;
+    background-size: 1.5em 1.5em !important;
+    padding-right: 2.5rem !important;
+  }
+
+  #business-type:focus,
+  select#business-type:focus,
+  .contact-form-modern #business-type:focus,
+  .contact-form-modern select#business-type:focus {
+    border-color: var(--accent) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.1) !important;
+    transform: translateY(-1px) !important;
+  }
+
+  #business-type option,
+  select#business-type option,
+  .contact-form-modern #business-type option,
+  .contact-form-modern select#business-type option {
+    background: rgba(26, 26, 26, 0.95) !important;
+    color: var(--text) !important;
+    padding: 0.5rem !important;
+  }
+
+  @media (max-width: 768px) {
+    .toast {
+      top: 1rem;
+      right: 1rem;
+      left: 1rem;
+      transform: translateY(-100px);
+    }
+
+    .toast.show {
+      transform: translateY(0);
+    }
+  }.modal-tech span {
     padding: 0.5rem 0.9rem;
     font-size: 0.8rem;
   }

@@ -518,7 +518,7 @@ function renderContact() {
         <p class="contact-description">Vous avez un projet ? Discutons-en !</p>
       </div>
       
-      <form class="contact-form-modern">
+      <form class="contact-form-modern" id="contact-form">
         <div class="form-row">
           <div class="form-group">
             <label for="contact-name">
@@ -528,7 +528,7 @@ function renderContact() {
               </svg>
               Nom complet
             </label>
-            <input type="text" id="contact-name" placeholder="Jean Dupont" required>
+            <input type="text" id="contact-name" name="name" placeholder="Jean Dupont" required>
           </div>
           
           <div class="form-group">
@@ -539,19 +539,41 @@ function renderContact() {
               </svg>
               Adresse email
             </label>
-            <input type="email" id="contact-email" placeholder="jean@exemple.com" required>
+            <input type="email" id="contact-email" name="email" placeholder="jean@exemple.com" required>
           </div>
         </div>
         
-        <div class="form-group">
-          <label for="contact-subject">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="22" y1="2" x2="11" y2="13"/>
-              <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-            </svg>
-            Sujet
-          </label>
-          <input type="text" id="contact-subject" placeholder="Demande de projet" required>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="business-name">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+              </svg>
+              Nom de l'entreprise (optionnel)
+            </label>
+            <input type="text" id="business-name" name="business_name" placeholder="Mon Entreprise SARL">
+          </div>
+          
+          <div class="form-group">
+            <label for="business-type">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+              Type d'entreprise (optionnel)
+            </label>
+            <select id="business-type" name="business_type" style="padding: 0.65rem 0.85rem; background: rgba(255, 255, 255, 0.03); border: 2px solid rgba(255, 255, 255, 0.1); border-radius: 10px; color: #fafafa; font-family: inherit; font-size: 0.9rem; outline: none; transition: all 0.3s ease; appearance: none; -webkit-appearance: none; -moz-appearance: none; cursor: pointer; width: 100%; background-image: url('data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%23fbbf24\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e'); background-position: right 0.75rem center; background-repeat: no-repeat; background-size: 1.5em 1.5em; padding-right: 2.5rem;">
+              <option value="">Sélectionner le type... ▼</option>
+              <option value="Startup">Startup</option>
+              <option value="PME">PME</option>
+              <option value="Grande entreprise">Grande entreprise</option>
+              <option value="Freelance">Freelance</option>
+              <option value="Association">Association</option>
+              <option value="E-commerce">E-commerce</option>
+              <option value="Agence">Agence</option>
+              <option value="Autre">Autre</option>
+            </select>
+          </div>
         </div>
         
         <div class="form-group">
@@ -561,7 +583,7 @@ function renderContact() {
             </svg>
             Message
           </label>
-          <textarea id="contact-message" placeholder="Parlez-moi de votre projet..." rows="3" required></textarea>
+          <textarea id="contact-message" name="message" placeholder="Parlez-moi de votre projet..." rows="4" required></textarea>
         </div>
         
         <button type="submit" class="submit-btn-modern">
@@ -569,11 +591,54 @@ function renderContact() {
             <line x1="22" y1="2" x2="11" y2="13"/>
             <polygon points="22 2 15 22 11 13 2 9 22 2"/>
           </svg>
-          Envoyer le message
+          <span class="btn-text">Envoyer le message</span>
+          <span class="btn-loading" style="display: none;">Envoi en cours...</span>
         </button>
       </form>
     </div>
   `
+}
+
+function showToast(message: string, type = 'success') {
+  const toast = document.createElement('div')
+  toast.style.cssText = `
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    border: 1px solid ${type === 'success' ? '#fbbf24' : '#ef4444'};
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    z-index: 10000;
+    transform: translateX(400px);
+    transition: all 0.3s ease;
+    font-family: var(--font-ui);
+    font-weight: 600;
+    max-width: 400px;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  `
+  
+  const icon = type === 'success' 
+    ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>'
+    : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>'
+  
+  toast.innerHTML = `${icon}<span>${message}</span>`
+  
+  document.body.appendChild(toast)
+  
+  setTimeout(() => {
+    toast.style.transform = 'translateX(0)'
+  }, 100)
+  
+  setTimeout(() => {
+    toast.style.transform = 'translateX(400px)'
+    setTimeout(() => toast.remove(), 300)
+  }, 4000)
 }
 
 function typeWriter(element: HTMLElement, text: string, speed = 30) {
@@ -649,19 +714,95 @@ function switchTab(tabName: string) {
   }
 
   if (tabName === 'contact') {
-    const form = container.querySelector('.contact-form-modern') as HTMLFormElement
-    form?.addEventListener('submit', (e) => {
+    // Apply select styling after DOM is ready
+    setTimeout(() => {
+      const select = document.getElementById('business-type') as HTMLSelectElement
+      if (select) {
+        select.style.cssText = `
+          padding: 0.65rem 0.85rem !important;
+          background: rgba(255, 255, 255, 0.03) !important;
+          border: 2px solid rgba(255, 255, 255, 0.1) !important;
+          border-radius: 10px !important;
+          color: #fafafa !important;
+          font-family: inherit !important;
+          font-size: 0.9rem !important;
+          outline: none !important;
+          transition: all 0.3s ease !important;
+          appearance: none !important;
+          -webkit-appearance: none !important;
+          -moz-appearance: none !important;
+          cursor: pointer !important;
+          width: 100% !important;
+          background-image: url('data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%23fbbf24\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e') !important;
+          background-position: right 0.75rem center !important;
+          background-repeat: no-repeat !important;
+          background-size: 1.5em 1.5em !important;
+          padding-right: 2.5rem !important;
+        `
+        
+        // Style options
+        const options = select.querySelectorAll('option')
+        options.forEach(option => {
+          (option as HTMLOptionElement).style.cssText = `
+            background: #1a1a1a !important;
+            color: #fafafa !important;
+            padding: 0.5rem !important;
+          `
+        })
+        
+        select.addEventListener('focus', () => {
+          select.style.borderColor = '#fbbf24'
+          select.style.background = 'rgba(255, 255, 255, 0.05)'
+          select.style.boxShadow = '0 0 0 3px rgba(251, 191, 36, 0.1)'
+          select.style.transform = 'translateY(-1px)'
+        })
+        
+        select.addEventListener('blur', () => {
+          select.style.borderColor = 'rgba(255, 255, 255, 0.1)'
+          select.style.background = 'rgba(255, 255, 255, 0.03)'
+          select.style.boxShadow = 'none'
+          select.style.transform = 'translateY(0)'
+        })
+      }
+    }, 50)
+    
+    const form = container.querySelector('#contact-form') as HTMLFormElement
+    form?.addEventListener('submit', async (e) => {
       e.preventDefault()
-      alert('✅ Message envoyé avec succès ! (Démo)')
-      form.reset()
       
-      // Celebration effect
-      for (let i = 0; i < 20; i++) {
-        setTimeout(() => {
-          const x = Math.random() * window.innerWidth
-          const y = Math.random() * window.innerHeight
-          createRipple({ clientX: x, clientY: y } as MouseEvent)
-        }, i * 50)
+      const submitBtn = form.querySelector('.submit-btn-modern') as HTMLButtonElement
+      const btnText = submitBtn.querySelector('.btn-text') as HTMLElement
+      const btnLoading = submitBtn.querySelector('.btn-loading') as HTMLElement
+      
+      // Show loading state
+      submitBtn.disabled = true
+      btnText.style.display = 'none'
+      btnLoading.style.display = 'inline'
+      
+      try {
+        const formData = new FormData(form)
+        await (window as any).sendEmailJS(formData)
+        
+        // Success
+        showToast('Message envoyé avec succès !')
+        form.reset()
+        
+        // Celebration effect
+        for (let i = 0; i < 20; i++) {
+          setTimeout(() => {
+            const x = Math.random() * window.innerWidth
+            const y = Math.random() * window.innerHeight
+            createRipple({ clientX: x, clientY: y } as MouseEvent)
+          }, i * 50)
+        }
+      } catch (error) {
+        console.error('EmailJS Error:', error)
+        showToast('Erreur lors de l\'envoi. Veuillez réessayer.', 'error')
+      } finally {
+        // Reset button state
+        submitBtn.disabled = false
+        btnText.style.display = 'inline'
+        btnLoading.style.display = 'none'
       }
     })
   }

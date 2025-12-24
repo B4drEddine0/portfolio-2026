@@ -780,8 +780,26 @@ function switchTab(tabName: string) {
       btnLoading.style.display = 'inline'
       
       try {
+        // Initialize EmailJS if not already done
+        if (!(window as any).emailjs) {
+          throw new Error('EmailJS not loaded')
+        }
+        
         const formData = new FormData(form)
-        await (window as any).sendEmailJS(formData)
+        const templateParams = {
+          from_name: formData.get('name'),
+          from_email: formData.get('email'),
+          business_name: formData.get('business_name') || 'Non spécifié',
+          business_type: formData.get('business_type') || 'Non spécifié',
+          message: formData.get('message')
+        }
+        
+        await (window as any).emailjs.send(
+          'service_l0cjpdb',
+          'template_r0l0e38',
+          templateParams,
+          'y7RZHk8iIqIfltVbq'
+        )
         
         // Success
         showToast('Message envoyé avec succès !')
@@ -1136,6 +1154,11 @@ function init() {
     </div>
     <div class="modal"></div>
   `
+
+  // Initialize EmailJS
+  if ((window as any).emailjs) {
+    (window as any).emailjs.init('y7RZHk8iIqIfltVbq')
+  }
 
   initThreeBackground()
   switchTab('about')

@@ -1228,6 +1228,12 @@ function init() {
 
   // Keyboard navigation
   document.addEventListener('keydown', (e) => {
+    // Don't trigger navigation if user is typing in a form field
+    const activeElement = document.activeElement
+    if (activeElement && (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA' || activeElement.tagName === 'SELECT')) {
+      return
+    }
+    
     const tabs = ['about', 'resume', 'skills', 'portfolio', 'contact']
     const currentIndex = tabs.indexOf(currentTab)
     

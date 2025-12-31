@@ -528,7 +528,7 @@ function renderContact() {
               </svg>
               Nom complet
             </label>
-            <input type="text" id="contact-name" name="name" placeholder="Jean Dupont" required>
+            <input type="text" id="contact-name" name="name" placeholder="Nom complet" required>
           </div>
           
           <div class="form-group">
@@ -539,7 +539,7 @@ function renderContact() {
               </svg>
               Adresse email
             </label>
-            <input type="email" id="contact-email" name="email" placeholder="jean@exemple.com" required>
+            <input type="email" id="contact-email" name="email" placeholder="nom@exemple.com" required>
           </div>
         </div>
         

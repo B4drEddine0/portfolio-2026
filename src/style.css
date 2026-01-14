@@ -3163,3 +3163,37 @@ body::before {
   transform: scale(1.05) rotate(2deg);
   box-shadow: 0 8px 30px rgba(251, 191, 36, 0.6);
 }
+
+
+/* Language Switcher */
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: #fafafa;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  width: 100%;
+  justify-content: center;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.lang-switcher:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #fbbf24;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.2);
+}
+
+.lang-switcher svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2;
+}

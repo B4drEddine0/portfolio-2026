@@ -1,8 +1,12 @@
 import './style.css'
+import { translations, setLanguage, getLanguage } from './translations'
+import type { Language } from './translations'
+
+let lang: Language = getLanguage()
 
 const profile = {
   name: 'BadrEddine MassaAlKhayr',
-  title: 'Développeur Full Stack',
+  get title() { return translations[lang].title },
   avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop',
   email: 'badrdine03@gmail.com',
   phone: '+212687838857',
@@ -12,27 +16,33 @@ const profile = {
 }
 
 const about = {
-  bio: `Développeur full-stack avec de solides fondamentaux et une forte expérience pratique en projets réels. Orienté résultats, j'apprends rapidement et mobilise mon expertise ainsi que des outils d'IA spécialisés en programmation pour concevoir et livrer des solutions fiables, performantes et optimisées dans des délais courts.`,
-  services: [
-    { icon: '💻', title: 'Développement Front-end', description: 'HTML, CSS, JavaScript, Tailwind CSS, Livewire, React JS - Création d\'interfaces modernes et responsive.' },
-    { icon: '⚙️', title: 'Développement Back-end', description: 'C#, .NET, PHP, Laravel, JAVA, SpringBoot - Conception d\'APIs robustes et scalables.' },
-    { icon: '🗄️', title: 'Bases de données & CMS', description: 'MySQL, PostgreSQL, WordPress - Gestion et optimisation de données avec expertise CMS.' },
-    { icon: '🚀', title: 'Soft Skills & Méthodes Agile', description: 'Leadership d\'équipe, résolution de problèmes, Scrum, Kanban, planification de sprints.' }
+  get bio() { return translations[lang].bio },
+  get services() { 
+    return [
+      { icon: '💻', title: translations[lang].services.frontend.title, description: translations[lang].services.frontend.desc },
+      { icon: '⚙️', title: translations[lang].services.backend.title, description: translations[lang].services.backend.desc },
+      { icon: '🗄️', title: translations[lang].services.database.title, description: translations[lang].services.database.desc },
+      { icon: '🚀', title: translations[lang].services.softskills.title, description: translations[lang].services.softskills.desc }
+    ]
+  }
+}
+
+function getEducation() {
+  return [
+    { degree: translations[lang].education.title1, school: translations[lang].education.school1, period: translations[lang].education.period1 },
+    { degree: translations[lang].education.title2, school: translations[lang].education.school2, period: translations[lang].education.period2 },
+    { degree: translations[lang].education.title3, school: translations[lang].education.school3, period: translations[lang].education.period3 },
+    { degree: translations[lang].education.title4, school: translations[lang].education.school4, period: translations[lang].education.period4 }
   ]
 }
 
-const education = [
-  { degree: 'Formation en développement full stack', school: 'YouCode Nador', period: 'Depuis septembre 2024' },
-  { degree: 'Technicien spécialisé en Développement informatique', school: 'Epige Nador', period: 'Septembre 2022 — Septembre 2024' },
-  { degree: 'Études en anglais', school: 'Université Mohamed Premier Nador', period: 'Septembre 2021 — Juin 2022' },
-  { degree: 'Baccalauréat en Sciences de la Vie et de la Terre', school: 'Lycée Nador El Jadid', period: 'Septembre 2020 — Septembre 2021' }
-]
-
-const experience = [
-  { title: 'Développeur Full-Stack', company: 'LogicielLab (Freelancer)', period: 'Août 2025 — Octobre 2025 (3 mois)', description: 'Développé et maintenu des applications web full-stack, dont des plateformes de livraison et de logistique similaires à Glovo. Conçu des fonctionnalités en temps réel avec Laravel, Livewire et MySQL, et intégré des API tierces. Solutions performantes, évolutives et sécurisées, en respectant les principes MVC.' },
-  { title: 'Stage Full-Stack', company: 'LogicielLab Tanger', period: 'Mai 2025 — Août 2025 (3 mois)', description: 'Contribué au développement d\'une plateforme de livraison de nourriture full-stack au sein d\'une équipe Agile. Conçu une landing page responsive et multilingue, un tableau de bord pour gérer menus et commandes, et un tableau de bord super admin. Intégré AWS S3, RabbitMQ et Redis.' },
-  { title: 'Stage Développeur Desktop', company: 'Mesq Amin SARL Nador', period: 'Février 2024 — Avril 2024 (2 mois)', description: 'Développé une application desktop de gestion logistique pour le transport de marchandises avec C#, WinForms et SQL Server. Système de suivi des expéditions, gestion des stocks et rapports automatisés.' }
-]
+function getExperience() {
+  return [
+    { title: translations[lang].experience.title1, company: translations[lang].experience.company1, period: translations[lang].experience.period1, description: translations[lang].experience.desc1 },
+    { title: translations[lang].experience.title2, company: translations[lang].experience.company2, period: translations[lang].experience.period2, description: translations[lang].experience.desc2 },
+    { title: translations[lang].experience.title3, company: translations[lang].experience.company3, period: translations[lang].experience.period3, description: translations[lang].experience.desc3 }
+  ]
+}
 
 const skills = [
   { name: 'HTML5', icon: '<svg viewBox="0 0 24 24" fill="#E34F26"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"/></svg>' },
@@ -61,62 +71,20 @@ const skills = [
 
 const projects = [
   {
-    name: 'Système de gestion de transport',
+    name: translations[lang].projects.transport.name,
     category: 'csharp',
-    description: 'Logiciel de gestion de transport pour les entreprises de logistique au Maroc et à l\'international.',
-    detailedDescription: `Un système complet de gestion de transport avec suivi en temps réel, développé pour optimiser les opérations logistiques des entreprises de transport.
-
-<strong>Fonctionnalités principales :</strong>
-• Page d'accueil avec statistiques claires sur les revenus, dépenses et bénéfices
-• Suivi GPS en temps réel des véhicules sur cartes interactives
-• Gestion complète des commandes de transport
-• Gestion des chauffeurs et des véhicules
-• Rappels automatiques pour la maintenance et les documents
-• Facturation pour livraisons nationales (avec TVA) et internationales
-• Aperçu financier avec revenus et dépenses
-• Export Excel pour l'échange de données avec d'autres entreprises
-• Sauvegarde et récupération des données
-• Administration des utilisateurs avec différents droits d'accès
-• Journal d'actions pour les administrateurs
-• Interface utilisateur personnalisable avec divers thèmes`,
+    description: translations[lang].projects.transport.desc,
+    detailedDescription: translations[lang].projects.transport.detailed,
     tech: ['C#', 'WinForms', 'SQL Server', 'HTML/CSS/JS', 'Crystal Reports'],
     image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop',
     video: '/logistic-app/demo.mp4',
     mediaType: 'video'
   },
   {
-    name: 'FasGo - Plateforme de livraison',
+    name: translations[lang].projects.fasgo.name,
     category: 'laravel',
-    description: 'Architecture microservices complète pour une plateforme de livraison de nourriture opérant au Maroc.',
-    detailedDescription: `Développement d'une architecture microservices complète pour FasGo, une plateforme de livraison de nourriture innovante au Maroc, connectant clients et restaurants locaux.
-
-<strong>Objectifs réalisés :</strong>
-• Conception et développement d'une landing page avec formulaires d'inscription
-• Création d'un tableau de bord pour les restaurants partenaires
-• Développement d'un super admin dashboard avec suivi en temps réel des livreurs
-• Intégration des services cloud AWS (S3) pour la gestion des fichiers
-• Implémentation d'un système de communication en temps réel avec RabbitMQ
-• Préparation de l'infrastructure pour un futur dashboard des livreurs
-
-<strong>Technologies Backend :</strong>
-• Laravel 12 (Framework PHP)
-• MySQL (Base de données principale)
-• Redis (Cache et sessions)
-• RabbitMQ (Message broker pour communication temps réel)
-
-<strong>Technologies Frontend :</strong>
-• Livewire (Framework Laravel pour interfaces réactives)
-• Tailwind CSS (Framework CSS utilitaire)
-• JavaScript/Alpine.js
-• Flux UI (Composants Livewire)
-
-<strong>Services Cloud :</strong>
-• AWS S3 (Stockage de fichiers)
-• AWS SQS (Queue management)
-
-<strong>Outils de cartographie :</strong>
-• Leaflet.js (Cartes interactives)
-• APIs de géolocalisation`,
+    description: translations[lang].projects.fasgo.desc,
+    detailedDescription: translations[lang].projects.fasgo.detailed,
     tech: ['Laravel', 'Livewire', 'Tailwind CSS', 'MySQL', 'Redis', 'RabbitMQ', 'AWS S3'],
     image: '/fasgo-cover.png',
     images: [
@@ -140,72 +108,10 @@ const projects = [
     mediaType: 'images'
   },
   {
-    name: 'Tricol - Gestion Stock & Commandes',
+    name: translations[lang].projects.tricol.name,
     category: 'springboot',
-    description: 'API REST complète pour la gestion des commandes fournisseurs et du stock avec méthode FIFO pour entreprise textile.',
-    detailedDescription: `Développement d'une API REST complète pour Tricol, entreprise spécialisée dans la fabrication de vêtements professionnels, permettant la digitalisation de la gestion des approvisionnements et du stock.
-
-<strong>Fonctionnalités développées :</strong>
-
-<strong>📦 Gestion des Fournisseurs</strong>
-• CRUD complet avec recherche et filtrage avancés
-• Gestion des informations complètes : raison sociale, contacts, ICE
-• Association avec les commandes et produits
-
-<strong>🏷️ Gestion des Produits</strong>
-• CRUD complet avec gestion des catégories
-• Consultation du stock disponible en temps réel
-• Système d'alertes automatiques sur seuils minimums
-• Traçabilité complète des mouvements
-
-<strong>📋 Gestion des Commandes Fournisseurs</strong>
-• Création, modification et annulation de commandes
-• Calcul automatique des montants totaux
-• Gestion des statuts : EN_ATTENTE, VALIDÉE, LIVRÉE, ANNULÉE
-• Réception de commandes avec génération automatique des lots de stock
-• Filtrage par fournisseur, statut et période
-
-<strong>📊 Gestion de Stock (Méthode FIFO)</strong>
-• Mouvements d'entrée automatiques lors de la réception des commandes
-• Mouvements de sortie selon la méthode FIFO (First In, First Out)
-• Traçabilité complète des lots : numéro unique, date d'entrée, prix d'achat
-• Valorisation du stock en temps réel avec méthode FIFO
-• Historique détaillé de tous les mouvements
-• Alertes automatiques pour stocks sous le seuil minimum
-
-<strong>📄 Bons de Sortie Atelier</strong>
-• Création de bons de sortie pour les ateliers de production
-• Ajout multi-produits avec quantités spécifiques
-• Validation déclenchant automatiquement les sorties FIFO
-• Gestion des statuts : BROUILLON, VALIDÉ, ANNULÉ
-• Motifs de sortie : PRODUCTION, MAINTENANCE, AUTRE
-• Traçabilité complète entre bons de sortie et mouvements de stock
-
-<strong>🔐 Sécurité & Authentification</strong>
-• Authentification JWT (JSON Web Tokens)
-• Gestion des rôles et permissions (Role-Based Access Control)
-• Sécurisation de toutes les endpoints de l'API
-
-<strong>✅ Tests & Qualité</strong>
-• Tests unitaires complets avec JUnit
-• Tests de mocking avec Mockito
-• Couverture de tests élevée pour garantir la fiabilité
-• Validation des règles métier FIFO
-
-<strong>💻 Frontend Angular (En développement)</strong>
-• Interface web moderne développée avec Angular
-• Consommation de l'API REST
-• Dashboard interactif pour la gestion du stock
-• Visualisation en temps réel des données
-• Interface utilisateur intuitive et responsive
-
-<strong>Technologies utilisées :</strong>
-• Spring Boot (Backend REST API)
-• Spring Security avec JWT
-• JPA/Hibernate (ORM)
-• MySQL (Base de données)
-• JUnit & Mockito (Tests)
-• Angular (Frontend - en cours)`,
+    description: translations[lang].projects.tricol.desc,
+    detailedDescription: translations[lang].projects.tricol.detailed,
     tech: ['Spring Boot', 'Spring Security', 'JWT', 'JPA', 'MySQL', 'JUnit', 'Mockito', 'Angular'],
     image: '/tricol-cover.svg',
     mediaType: 'image'
@@ -224,26 +130,26 @@ function renderAbout() {
   const achievements = [
     { 
       icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>',
-      value: 'Apprentissage Rapide',
-      label: 'Adaptation Rapide',
+      value: translations[lang].achievements.learning.value,
+      label: translations[lang].achievements.learning.label,
       gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
     },
     { 
       icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>',
-      value: '15+ Projets',
-      label: 'Livrés avec Succès',
+      value: translations[lang].achievements.projects.value,
+      label: translations[lang].achievements.projects.label,
       gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'
     },
     { 
       icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>',
-      value: 'Full-Stack',
-      label: 'Solutions Complètes',
+      value: translations[lang].achievements.fullstack.value,
+      label: translations[lang].achievements.fullstack.label,
       gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'
     },
     { 
       icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>',
-      value: '20+ Technologies',
-      label: 'Stack Moderne',
+      value: translations[lang].achievements.tech.value,
+      label: translations[lang].achievements.tech.label,
       gradient: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)'
     }
   ]
@@ -270,7 +176,7 @@ function renderAbout() {
                 <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
                 <path d="M16 2v4M8 2v4M3 10h18"/>
               </svg>
-              <span>Disponible pour projets</span>
+              <span>${translations[lang].quickInfo.available}</span>
             </div>
             <div class="info-badge">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -301,9 +207,11 @@ function renderAbout() {
 }
 
 function renderResume() {
+  const education = getEducation()
+  const experience = getExperience()
   return `
     <div class="tab-content resume-centered">
-      <h2 class="content-title">Expérience & Formation</h2>
+      <h2 class="content-title">${translations[lang].experienceAndEducation}</h2>
       
       <div class="resume-grid">
         <!-- Education Section -->
@@ -313,7 +221,7 @@ function renderResume() {
               <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
               <path d="M6 12v5c3 3 9 3 12 0v-5"/>
             </svg>
-            <h3>Formation</h3>
+            <h3>${translations[lang].educationLabel}</h3>
           </div>
           <div class="timeline-modern">
             ${education
@@ -341,7 +249,7 @@ function renderResume() {
               <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
               <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
             </svg>
-            <h3>Experience</h3>
+            <h3>${translations[lang].experienceLabel}</h3>
           </div>
           <div class="timeline-modern">
             ${experience
@@ -369,7 +277,7 @@ function renderResume() {
 function renderSkills() {
   return `
     <div class="tab-content skills-centered">
-      <h2 class="content-title">Compétences Techniques</h2>
+      <h2 class="content-title">${translations[lang].technicalSkills}</h2>
       
       <div class="skills-grid-compact">
         <div class="skills-category-compact">
@@ -378,7 +286,7 @@ function renderSkills() {
               <polyline points="16 18 22 12 16 6"/>
               <polyline points="8 6 2 12 8 18"/>
             </svg>
-            <h3>Frontend</h3>
+            <h3>${translations[lang].frontend}</h3>
           </div>
           <div class="tech-badges-compact">
             ${skills.filter(s => ['HTML5', 'CSS3', 'JavaScript', 'React', 'Tailwind', 'Livewire'].includes(s.name)).map((s) => `
@@ -396,7 +304,7 @@ function renderSkills() {
               <rect x="2" y="3" width="20" height="14" rx="2"/>
               <path d="M8 21h8M12 17v4"/>
             </svg>
-            <h3>Backend</h3>
+            <h3>${translations[lang].backend}</h3>
           </div>
           <div class="tech-badges-compact">
             ${skills.filter(s => ['PHP', 'Laravel', 'C#', '.NET', 'Java', 'Spring'].includes(s.name)).map((s) => `
@@ -415,7 +323,7 @@ function renderSkills() {
               <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
               <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
             </svg>
-            <h3>Base de données</h3>
+            <h3>${translations[lang].database}</h3>
           </div>
           <div class="tech-badges-compact">
             ${skills.filter(s => ['MySQL', 'PostgreSQL', 'MongoDB'].includes(s.name)).map((s) => `
@@ -433,7 +341,7 @@ function renderSkills() {
               <circle cx="12" cy="12" r="10"/>
               <path d="M12 16v-4M12 8h.01"/>
             </svg>
-            <h3>Outils</h3>
+            <h3>${translations[lang].tools}</h3>
           </div>
           <div class="tech-badges-compact">
             ${skills.filter(s => ['Git', 'GitHub', 'Docker', 'AWS', 'JIRA', 'Figma', 'WordPress'].includes(s.name)).map((s) => `
@@ -452,17 +360,13 @@ function renderSkills() {
 function renderPortfolio() {
   const filtered = currentFilter === 'all' ? projects : projects.filter(p => p.category === currentFilter)
   
-  const categoryLabels: Record<string, string> = {
-    'laravel': 'Laravel',
-    'springboot': 'Spring Boot',
-    'csharp': '.NET / C#'
-  }
+  const categoryLabels: Record<string, string> = translations[lang].categoryLabels
   
   return `
     <div class="tab-content">
-      <h2 class="content-title">Portfolio</h2>
+      <h2 class="content-title">${translations[lang].portfolio}</h2>
       <div class="filter-tabs">
-        <button class="filter-tab ${currentFilter === 'all' ? 'active' : ''}" data-filter="all">Tout</button>
+        <button class="filter-tab ${currentFilter === 'all' ? 'active' : ''}" data-filter="all">${translations[lang].all}</button>
         <button class="filter-tab ${currentFilter === 'laravel' ? 'active' : ''}" data-filter="laravel">Laravel</button>
         <button class="filter-tab ${currentFilter === 'springboot' ? 'active' : ''}" data-filter="springboot">Spring Boot</button>
         <button class="filter-tab ${currentFilter === 'csharp' ? 'active' : ''}" data-filter="csharp">.NET / C#</button>
@@ -501,7 +405,7 @@ function renderPortfolio() {
                 <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
                 <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
               </svg>
-              <span>Code Source Privé</span>
+              <span>${translations[lang].privateSource}</span>
             </div>
           </div>
         `).join('')}
@@ -514,8 +418,8 @@ function renderContact() {
   return `
     <div class="tab-content contact-centered">
       <div class="contact-header">
-        <h2 class="content-title">Contactez-moi</h2>
-        <p class="contact-description">Vous avez un projet ? Discutons-en !</p>
+        <h2 class="content-title">${translations[lang].contactMe}</h2>
+        <p class="contact-description">${translations[lang].haveProject}</p>
       </div>
       
       <form class="contact-form-modern" id="contact-form">
@@ -526,9 +430,9 @@ function renderContact() {
                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
                 <circle cx="12" cy="7" r="4"/>
               </svg>
-              Nom complet
+              ${translations[lang].fullName}
             </label>
-            <input type="text" id="contact-name" name="name" placeholder="Nom complet" required>
+            <input type="text" id="contact-name" name="name" placeholder="${translations[lang].fullName}" required>
           </div>
           
           <div class="form-group">
@@ -537,9 +441,9 @@ function renderContact() {
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                 <polyline points="22,6 12,13 2,6"/>
               </svg>
-              Adresse email
+              ${translations[lang].emailAddress}
             </label>
-            <input type="email" id="contact-email" name="email" placeholder="nom@exemple.com" required>
+            <input type="email" id="contact-email" name="email" placeholder="${translations[lang].emailAddress}" required>
           </div>
         </div>
         
@@ -550,9 +454,9 @@ function renderContact() {
                 <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
                 <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
               </svg>
-              Nom de l'entreprise (optionnel)
+              ${translations[lang].companyName}
             </label>
-            <input type="text" id="business-name" name="business_name" placeholder="Mon Entreprise SARL">
+            <input type="text" id="business-name" name="business_name" placeholder="${translations[lang].companyName}">
           </div>
           
           <div class="form-group">
@@ -560,10 +464,10 @@ function renderContact() {
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
               </svg>
-              Type d'entreprise (optionnel)
+              ${translations[lang].companyType}
             </label>
             <select id="business-type" name="business_type" style="padding: 0.65rem 0.85rem; background: rgba(255, 255, 255, 0.03); border: 2px solid rgba(255, 255, 255, 0.1); border-radius: 10px; color: #fafafa; font-family: inherit; font-size: 0.9rem; outline: none; transition: all 0.3s ease; appearance: none; -webkit-appearance: none; -moz-appearance: none; cursor: pointer; width: 100%; background-image: url('data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%23fbbf24\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e'); background-position: right 0.75rem center; background-repeat: no-repeat; background-size: 1.5em 1.5em; padding-right: 2.5rem;">
-              <option value="">Sélectionner le type... ▼</option>
+              <option value="">${translations[lang].selectType}</option>
               <option value="Startup">Startup</option>
               <option value="PME">PME</option>
               <option value="Grande entreprise">Grande entreprise</option>
@@ -581,9 +485,9 @@ function renderContact() {
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
             </svg>
-            Message
+            ${translations[lang].message}
           </label>
-          <textarea id="contact-message" name="message" placeholder="Parlez-moi de votre projet..." rows="4" required></textarea>
+          <textarea id="contact-message" name="message" placeholder="${translations[lang].tellProject}" rows="4" required></textarea>
         </div>
         
         <button type="submit" class="submit-btn-modern">
@@ -591,8 +495,8 @@ function renderContact() {
             <line x1="22" y1="2" x2="11" y2="13"/>
             <polygon points="22 2 15 22 11 13 2 9 22 2"/>
           </svg>
-          <span class="btn-text">Envoyer le message</span>
-          <span class="btn-loading" style="display: none;">Envoi en cours...</span>
+          <span class="btn-text">${translations[lang].sendMessage}</span>
+          <span class="btn-loading" style="display: none;">${translations[lang].sending}</span>
         </button>
       </form>
     </div>
@@ -802,7 +706,7 @@ function switchTab(tabName: string) {
         )
         
         // Success
-        showToast('Message envoyé avec succès !')
+        showToast(translations[lang].messageSent)
         form.reset()
         
         // Celebration effect
@@ -815,7 +719,7 @@ function switchTab(tabName: string) {
         }
       } catch (error) {
         console.error('EmailJS Error:', error)
-        showToast('Erreur lors de l\'envoi. Veuillez réessayer.', 'error')
+        showToast(translations[lang].messageError, 'error')
       } finally {
         // Reset button state
         submitBtn.disabled = false
@@ -1028,7 +932,7 @@ function init() {
   app.innerHTML = `
     <div class="loader">
       <div class="loader-content">
-        <div class="loader-letters">Bienvenue à mon portfolio</div>
+        <div class="loader-letters">${translations[lang].welcome}</div>
       </div>
     </div>
     <div id="bg-canvas"></div>
@@ -1039,8 +943,8 @@ function init() {
         <p class="profile-tag">${profile.title}</p>
         <div class="profile-contacts">
           <div><small>Email</small><span>${profile.email}</span></div>
-          <div><small>Téléphone</small><span>${profile.phone}</span></div>
-          <div><small>Localisation</small><span>${profile.location}</span></div>
+          <div><small>${translations[lang].phone || 'Phone'}</small><span>${profile.phone}</span></div>
+          <div><small>${translations[lang].location || 'Location'}</small><span>${profile.location}</span></div>
         </div>
         <div class="social-links">
           <a href="${profile.github}" target="_blank" title="GitHub">
@@ -1054,13 +958,21 @@ function init() {
           </a>
         </div>
         
+        <button class="lang-switcher" id="langSwitcher">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+          <span>${lang === 'en' ? 'FR' : 'EN'}</span>
+        </button>
+        
         <a href="/cv.pdf" download class="download-cv-btn">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
             <polyline points="7 10 12 15 17 10"></polyline>
             <line x1="12" y1="15" x2="12" y2="3"></line>
           </svg>
-          <span>Télécharger CV</span>
+          <span>${translations[lang].downloadCV}</span>
         </a>
         
         <div class="sidebar-footer">
@@ -1082,7 +994,7 @@ function init() {
         <!-- Side Drawer Menu -->
         <div class="side-drawer" id="sideDrawer">
           <div class="side-drawer-header">
-            <h2>Navigation</h2>
+            <h2>${translations[lang].navigation}</h2>
             <button class="side-drawer-close" id="sideDrawerClose">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -1097,35 +1009,35 @@ function init() {
                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
                 <circle cx="12" cy="7" r="4"/>
               </svg>
-              <span>À propos</span>
+              <span>${translations[lang].about}</span>
             </button>
             <button class="side-drawer-item" data-tab="resume">
               <svg class="side-drawer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
                 <polyline points="14 2 14 8 20 8"/>
               </svg>
-              <span>CV</span>
+              <span>${translations[lang].resume}</span>
             </button>
             <button class="side-drawer-item" data-tab="skills">
               <svg class="side-drawer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polyline points="16 18 22 12 16 6"/>
                 <polyline points="8 6 2 12 8 18"/>
               </svg>
-              <span>Compétences</span>
+              <span>${translations[lang].skills}</span>
             </button>
             <button class="side-drawer-item" data-tab="portfolio">
               <svg class="side-drawer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
                 <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
               </svg>
-              <span>Portfolio</span>
+              <span>${translations[lang].portfolio}</span>
             </button>
             <button class="side-drawer-item" data-tab="contact">
               <svg class="side-drawer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                 <polyline points="22,6 12,13 2,6"/>
               </svg>
-              <span>Contact</span>
+              <span>${translations[lang].contact}</span>
             </button>
           </nav>
         </div>
@@ -1133,19 +1045,19 @@ function init() {
         <!-- Desktop Navigation Tabs -->
         <nav class="tab-nav">
           <button class="tab-btn active" data-tab="about">
-            <span>À propos</span>
+            <span>${translations[lang].about}</span>
           </button>
           <button class="tab-btn" data-tab="resume">
-            <span>CV</span>
+            <span>${translations[lang].resume}</span>
           </button>
           <button class="tab-btn" data-tab="skills">
-            <span>Compétences</span>
+            <span>${translations[lang].skills}</span>
           </button>
           <button class="tab-btn" data-tab="portfolio">
-            <span>Portfolio</span>
+            <span>${translations[lang].portfolio}</span>
           </button>
           <button class="tab-btn" data-tab="contact">
-            <span>Contact</span>
+            <span>${translations[lang].contact}</span>
           </button>
         </nav>
         
@@ -1225,6 +1137,13 @@ function init() {
 
   // Click ripple effect
   document.addEventListener('click', createRipple)
+
+  // Language switcher
+  document.getElementById('langSwitcher')?.addEventListener('click', () => {
+    const newLang: Language = lang === 'en' ? 'fr' : 'en'
+    setLanguage(newLang)
+    location.reload()
+  })
 
   // Keyboard navigation
   document.addEventListener('keydown', (e) => {

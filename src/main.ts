@@ -19,28 +19,79 @@ const about = {
   get bio() { return translations[lang].bio },
   get services() { 
     return [
-      { icon: '💻', title: translations[lang].services.frontend.title, description: translations[lang].services.frontend.desc },
-      { icon: '⚙️', title: translations[lang].services.backend.title, description: translations[lang].services.backend.desc },
-      { icon: '🗄️', title: translations[lang].services.database.title, description: translations[lang].services.database.desc },
-      { icon: '🚀', title: translations[lang].services.softskills.title, description: translations[lang].services.softskills.desc }
+      { icon: '💻', title: translations[lang].serviceFrontendTitle, description: translations[lang].serviceFrontendDesc },
+      { icon: '⚙️', title: translations[lang].serviceBackendTitle, description: translations[lang].serviceBackendDesc },
+      { icon: '🗄️', title: translations[lang].serviceDatabaseTitle, description: translations[lang].serviceDatabaseDesc },
+      { icon: '🚀', title: translations[lang].serviceSoftskillsTitle, description: translations[lang].serviceSoftskillsDesc }
     ]
   }
 }
 
 function getEducation() {
   return [
-    { degree: translations[lang].education.title1, school: translations[lang].education.school1, period: translations[lang].education.period1 },
-    { degree: translations[lang].education.title2, school: translations[lang].education.school2, period: translations[lang].education.period2 },
-    { degree: translations[lang].education.title3, school: translations[lang].education.school3, period: translations[lang].education.period3 },
-    { degree: translations[lang].education.title4, school: translations[lang].education.school4, period: translations[lang].education.period4 }
+    { degree: translations[lang].eduTitle1, school: translations[lang].eduSchool1, period: translations[lang].eduPeriod1 },
+    { degree: translations[lang].eduTitle2, school: translations[lang].eduSchool2, period: translations[lang].eduPeriod2 },
+    { degree: translations[lang].eduTitle3, school: translations[lang].eduSchool3, period: translations[lang].eduPeriod3 },
+    { degree: translations[lang].eduTitle4, school: translations[lang].eduSchool4, period: translations[lang].eduPeriod4 }
   ]
 }
 
 function getExperience() {
   return [
-    { title: translations[lang].experience.title1, company: translations[lang].experience.company1, period: translations[lang].experience.period1, description: translations[lang].experience.desc1 },
-    { title: translations[lang].experience.title2, company: translations[lang].experience.company2, period: translations[lang].experience.period2, description: translations[lang].experience.desc2 },
-    { title: translations[lang].experience.title3, company: translations[lang].experience.company3, period: translations[lang].experience.period3, description: translations[lang].experience.desc3 }
+    { title: translations[lang].expTitle1, company: translations[lang].expCompany1, period: translations[lang].expPeriod1, description: translations[lang].expDesc1 },
+    { title: translations[lang].expTitle2, company: translations[lang].expCompany2, period: translations[lang].expPeriod2, description: translations[lang].expDesc2 },
+    { title: translations[lang].expTitle3, company: translations[lang].expCompany3, period: translations[lang].expPeriod3, description: translations[lang].expDesc3 }
+  ]
+}
+
+function getProjects() {
+  return [
+    {
+      name: translations[lang].projectTransportName,
+      category: 'csharp',
+      description: translations[lang].projectTransportDesc,
+      detailedDescription: translations[lang].projectTransportDetailed,
+      tech: ['C#', 'WinForms', 'SQL Server', 'HTML/CSS/JS', 'Crystal Reports'],
+      image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop',
+      video: '/logistic-app/demo.mp4',
+      mediaType: 'video' as const
+    },
+    {
+      name: translations[lang].projectFasgoName,
+      category: 'laravel',
+      description: translations[lang].projectFasgoDesc,
+      detailedDescription: translations[lang].projectFasgoDetailed,
+      tech: ['Laravel', 'Livewire', 'Tailwind CSS', 'MySQL', 'Redis', 'RabbitMQ', 'AWS S3'],
+      image: '/fasgo-cover.png',
+      images: [
+        '/fasgo-app/1.png',
+        '/fasgo-app/2.png',
+        '/fasgo-app/3.png',
+        '/fasgo-app/4.png',
+        '/fasgo-app/5.png',
+        '/fasgo-app/6.png',
+        '/fasgo-app/7.png',
+        '/fasgo-app/8.png',
+        '/fasgo-app/9.png',
+        '/fasgo-app/10.png',
+        '/fasgo-app/11.png',
+        '/fasgo-app/12.png',
+        '/fasgo-app/13.png',
+        '/fasgo-app/14.png',
+        '/fasgo-app/15.png',
+        '/fasgo-app/16.png'
+      ],
+      mediaType: 'images' as const
+    },
+    {
+      name: translations[lang].projectTricolName,
+      category: 'springboot',
+      description: translations[lang].projectTricolDesc,
+      detailedDescription: translations[lang].projectTricolDetailed,
+      tech: ['Spring Boot', 'Spring Security', 'JWT', 'JPA', 'MySQL', 'JUnit', 'Mockito', 'Angular'],
+      image: '/tricol-cover.svg',
+      mediaType: 'image' as const
+    },
   ]
 }
 
@@ -69,54 +120,7 @@ const skills = [
   { name: 'WordPress', icon: '<svg viewBox="0 0 24 24" fill="#21759B"><path d="M21.469 6.825c.84 1.537 1.318 3.3 1.318 5.175 0 3.979-2.156 7.456-5.363 9.325l3.295-9.527c.615-1.54.82-2.771.82-3.864 0-.405-.026-.78-.07-1.11m-7.981.105c.647-.03 1.232-.105 1.232-.105.582-.075.514-.93-.067-.899 0 0-1.755.135-2.88.135-1.064 0-2.85-.15-2.85-.15-.585-.03-.661.855-.075.885 0 0 .54.061 1.125.09l1.68 4.605-2.37 7.08L5.354 6.9c.649-.03 1.234-.1 1.234-.1.585-.064.516-.93-.065-.896 0 0-1.746.138-2.874.138-.2 0-.438-.008-.69-.015C4.911 3.15 8.235 1.215 12 1.215c2.809 0 5.365 1.072 7.286 2.833-.046-.003-.091-.009-.141-.009-1.06 0-1.812.923-1.812 1.914 0 .89.513 1.643 1.06 2.531.411.72.89 1.643.89 2.977 0 .915-.354 1.994-.821 3.479l-1.075 3.585-3.9-11.61.001.014zM12 22.784c-1.059 0-2.081-.153-3.048-.437l3.237-9.406 3.315 9.087c.024.053.05.101.078.149-1.12.393-2.325.609-3.582.609M1.211 12c0-1.564.336-3.05.935-4.39L7.29 21.709C3.694 19.96 1.212 16.271 1.211 12M12 0C5.385 0 0 5.385 0 12s5.385 12 12 12 12-5.385 12-12S18.615 0 12 0"/></svg>' }
 ]
 
-const projects = [
-  {
-    name: translations[lang].projects.transport.name,
-    category: 'csharp',
-    description: translations[lang].projects.transport.desc,
-    detailedDescription: translations[lang].projects.transport.detailed,
-    tech: ['C#', 'WinForms', 'SQL Server', 'HTML/CSS/JS', 'Crystal Reports'],
-    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop',
-    video: '/logistic-app/demo.mp4',
-    mediaType: 'video'
-  },
-  {
-    name: translations[lang].projects.fasgo.name,
-    category: 'laravel',
-    description: translations[lang].projects.fasgo.desc,
-    detailedDescription: translations[lang].projects.fasgo.detailed,
-    tech: ['Laravel', 'Livewire', 'Tailwind CSS', 'MySQL', 'Redis', 'RabbitMQ', 'AWS S3'],
-    image: '/fasgo-cover.png',
-    images: [
-      '/fasgo-app/1.png',
-      '/fasgo-app/2.png',
-      '/fasgo-app/3.png',
-      '/fasgo-app/4.png',
-      '/fasgo-app/5.png',
-      '/fasgo-app/6.png',
-      '/fasgo-app/7.png',
-      '/fasgo-app/8.png',
-      '/fasgo-app/9.png',
-      '/fasgo-app/10.png',
-      '/fasgo-app/11.png',
-      '/fasgo-app/12.png',
-      '/fasgo-app/13.png',
-      '/fasgo-app/14.png',
-      '/fasgo-app/15.png',
-      '/fasgo-app/16.png'
-    ],
-    mediaType: 'images'
-  },
-  {
-    name: translations[lang].projects.tricol.name,
-    category: 'springboot',
-    description: translations[lang].projects.tricol.desc,
-    detailedDescription: translations[lang].projects.tricol.detailed,
-    tech: ['Spring Boot', 'Spring Security', 'JWT', 'JPA', 'MySQL', 'JUnit', 'Mockito', 'Angular'],
-    image: '/tricol-cover.svg',
-    mediaType: 'image'
-  },
-]
+const projects = getProjects()
 
 let currentTab = 'about'
 let currentFilter = 'all'
@@ -130,26 +134,26 @@ function renderAbout() {
   const achievements = [
     { 
       icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>',
-      value: translations[lang].achievements.learning.value,
-      label: translations[lang].achievements.learning.label,
+      value: translations[lang].achievementLearningValue,
+      label: translations[lang].achievementLearningLabel,
       gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
     },
     { 
       icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>',
-      value: translations[lang].achievements.projects.value,
-      label: translations[lang].achievements.projects.label,
+      value: translations[lang].achievementProjectsValue,
+      label: translations[lang].achievementProjectsLabel,
       gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'
     },
     { 
       icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>',
-      value: translations[lang].achievements.fullstack.value,
-      label: translations[lang].achievements.fullstack.label,
+      value: translations[lang].achievementFullstackValue,
+      label: translations[lang].achievementFullstackLabel,
       gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'
     },
     { 
       icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>',
-      value: translations[lang].achievements.tech.value,
-      label: translations[lang].achievements.tech.label,
+      value: translations[lang].achievementTechValue,
+      label: translations[lang].achievementTechLabel,
       gradient: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)'
     }
   ]
@@ -176,7 +180,7 @@ function renderAbout() {
                 <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
                 <path d="M16 2v4M8 2v4M3 10h18"/>
               </svg>
-              <span>${translations[lang].quickInfo.available}</span>
+              <span>${translations[lang].quickInfoAvailable}</span>
             </div>
             <div class="info-badge">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -221,7 +225,7 @@ function renderResume() {
               <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
               <path d="M6 12v5c3 3 9 3 12 0v-5"/>
             </svg>
-            <h3>${translations[lang].educationLabel}</h3>
+            <h3>${translations[lang].education}</h3>
           </div>
           <div class="timeline-modern">
             ${education
@@ -249,7 +253,7 @@ function renderResume() {
               <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
               <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
             </svg>
-            <h3>${translations[lang].experienceLabel}</h3>
+            <h3>${translations[lang].experience}</h3>
           </div>
           <div class="timeline-modern">
             ${experience
@@ -358,9 +362,13 @@ function renderSkills() {
 }
 
 function renderPortfolio() {
-  const filtered = currentFilter === 'all' ? projects : projects.filter(p => p.category === currentFilter)
+  const filtered = currentFilter === 'all' ? getProjects() : getProjects().filter(p => p.category === currentFilter)
   
-  const categoryLabels: Record<string, string> = translations[lang].categoryLabels
+  const categoryLabels: Record<string, string> = {
+    laravel: translations[lang].categoryLaravel,
+    springboot: translations[lang].categorySpringboot,
+    csharp: translations[lang].categoryCsharp
+  }
   
   return `
     <div class="tab-content">
@@ -611,7 +619,7 @@ function switchTab(tabName: string) {
       (box as HTMLElement).style.animationDelay = `${i * 0.1}s`
       box.addEventListener('click', () => {
         const projectName = box.getAttribute('data-project-name') || ''
-        const project = projects.find(p => p.name === projectName)
+        const project = getProjects().find(p => p.name === projectName)
         if (project) showModal(project)
       })
     })
@@ -754,7 +762,7 @@ function switchTab(tabName: string) {
   }
 }
 
-function showModal(project: typeof projects[0]) {
+function showModal(project: ReturnType<typeof getProjects>[0]) {
   const modal = document.querySelector('.modal') as HTMLElement
   if (!modal) return
 

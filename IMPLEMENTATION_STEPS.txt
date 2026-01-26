@@ -7,7 +7,7 @@ const profile = {
   get title() { return t('title') },
   avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop',
   email: 'badrdine03@gmail.com',
-  phone: '+212687838857',
+  phone: '+212687833857',
   location: 'Nador, Morocco',
   github: 'https://github.com/B4drEddine0',
   linkedin: 'https://www.linkedin.com/in/massaalkhayr/'

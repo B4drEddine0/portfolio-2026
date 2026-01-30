@@ -28,13 +28,45 @@ Je suis un développeur full stack avec une expertise en :
 - 📑 **API REST** : 30+ endpoints documentés
 - 📋 **Traçabilité** : Historique des mouvements, valorisation du stock
 
-### 3. [Fasgo App](./Fasgo-app)
+### 3. LogicielLab - Plateforme Multi-Restaurants (Laravel)
+**Système complet de gestion de restaurants avec 3 modules interconnectés**
+
+#### 🎯 Architecture & Modules
+- **Landing Page Multilingue** (FR/AR/EN) : Vitrine responsive avec formulaires d'inscription et upload S3
+- **Dashboard Restaurant** : Interface complète pour gérer menus, commandes, notifications temps réel
+- **Super Admin Panel** : Gestion centralisée de tous les restaurants, métriques et analytics
+
+#### 💻 Stack Technique
+- **Backend** : Laravel 10, Livewire (composants réactifs)
+- **Base de données** : PostgreSQL / MySQL avec relations complexes
+- **Messaging** : RabbitMQ pour notifications temps réel
+- **Cache** : Redis pour optimisation des performances
+- **Storage** : AWS S3 pour images et documents
+- **Frontend** : Tailwind CSS, Alpine.js
+- **DevOps** : Docker, Docker Compose
+
+#### ⚡ Fonctionnalités Clés
+- 🍽️ **Gestion Menus** : CRUD complet avec catégories, prix, disponibilité
+- 📦 **Commandes en Temps Réel** : Suivi live avec notifications push via RabbitMQ
+- 🗺️ **Tracking Géographique** : Suivi des livreurs sur carte interactive
+- 📊 **Analytics Avancés** : Métriques de ventes, rapports, statistiques
+- 🔔 **Notifications** : Système de notifications en temps réel (commandes, statuts)
+- 🌐 **Multi-langue** : Support FR/AR/EN avec RTL pour l'arabe
+- 📱 **Responsive Design** : Interface adaptative mobile-first
+
+#### 🚀 Performance & Scalabilité
+- Cache Redis pour requêtes fréquentes et sessions
+- Queue jobs avec RabbitMQ pour tâches asynchrones
+- Optimisation des requêtes N+1 avec Eager Loading
+- CDN pour assets statiques (S3)
+
+### 4. [Fasgo App](./Fasgo-app)
 **Application de gestion logistique**
 - 📦 Suivi des expéditions
 - 📄 Gestion des documents
 - 📍 Optimisation des routes
 
-### 4. [Logistic App](./Logistic-app)
+### 5. [Logistic App](./Logistic-app)
 **Plateforme de gestion logistique**
 - 📊 Tableau de bord analytique
 - 📝 Gestion des commandes
